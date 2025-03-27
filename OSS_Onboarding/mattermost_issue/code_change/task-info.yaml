@@ -1,0 +1,19 @@
+type: edu
+custom_name: Refactoring the Component
+files:
+  - name: task.js
+    visible: true
+    propagatable: false
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: tests/test_store.tsx
+    visible: false
+  - name: types/store/index.ts
+    visible: false
+  - name: types/store/plugin.ts
+    visible: false
+  - name: types/store/storage.ts
+    visible: false
+  - name: types/store/views.ts
+    visible: false

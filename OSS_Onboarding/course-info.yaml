@@ -1,0 +1,9 @@
+type: marketplace
+title: OSS Onboarding
+language: English
+programming_language: JavaScript
+content:
+  - mattermost_issue
+additional_files:
+  - name: package.json
+yaml_version: 2

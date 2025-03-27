@@ -1,0 +1,13 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: Correct
+    is_correct: true
+  - text: Incorrect
+    is_correct: false
+files:
+  - name: task.js
+    visible: true
+    propagatable: false
+custom_name: Class Components vs Function Components
+local_check: true

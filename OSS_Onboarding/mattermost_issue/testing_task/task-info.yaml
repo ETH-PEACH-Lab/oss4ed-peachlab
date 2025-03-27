@@ -1,0 +1,19 @@
+type: edu
+custom_name: Checking the Tests
+files:
+  - name: task.js
+    visible: true
+    propagatable: false
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: types/store/index.ts
+    visible: true
+  - name: tests/test_store.tsx
+    visible: true
+  - name: types/store/plugin.ts
+    visible: true
+  - name: types/store/storage.ts
+    visible: true
+  - name: types/store/views.ts
+    visible: true

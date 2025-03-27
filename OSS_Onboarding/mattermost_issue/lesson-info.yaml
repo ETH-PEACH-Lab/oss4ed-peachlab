@@ -1,0 +1,7 @@
+type: framework
+custom_name: OSS Onboarding
+content:
+  - issue_understanding
+  - component_question
+  - code_change
+  - testing_task
