@@ -10,6 +10,6 @@ function import_task_file(f) {
 
 //todo: replace this with an actual test
 test('adds 1 + 2 to equal 3', () => {
-    import_task_file("task.js");
+    import_task_file("modals.test.jsx");
     expect(sum(1, 2)).toBe(3);
 });

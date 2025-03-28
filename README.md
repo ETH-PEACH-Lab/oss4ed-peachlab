@@ -13,8 +13,6 @@ This project is a bachelor thesis proposed by the Peach Lab at ETH.
 The 
 
 ## Course Creation <a name="coursecreation"></a>
-For this bachelor thesis, three courses have to be created which will then be handed 
-it at for the SIGCSE 2026 in July. Here is the list of the courses:
-- [OSS Onboarding](./OSS_Onboarding)
+[OSS Onboarding](./OSS_Onboarding)
 
 ## Benchmark <a name="benchmark"></a>

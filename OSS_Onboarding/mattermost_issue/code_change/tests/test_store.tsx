@@ -11,7 +11,7 @@ import type {ThunkDispatch} from 'redux-thunk';
 
 import type {DeepPartial} from '@mattermost/types/utilities';
 
-import type {GlobalState} from 'types/store';
+import type {GlobalState} from '../types/store';
 
 import {defaultIntl} from './helpers/intl-test-helper';
 

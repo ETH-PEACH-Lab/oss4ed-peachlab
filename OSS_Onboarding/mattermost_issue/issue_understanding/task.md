@@ -1,4 +1,6 @@
 
+# Mattemost Issue #26238
+
 Your task in this course is to improve the "mattermost" project. Mattermost is an open source platform for secure 
 collaboration across the entire software development lifecycle. The improvement you will tackle on is describe in the 
 following issue description:
@@ -12,7 +14,7 @@ If the tests do not work because they rely on the behavior of Class Components t
 test the same behavior. We prefer the use of react-testing-library for new tests, but it is not required.
 ```
 
-You can find the entire issue description when clicking on the following link `[Class Component Issue](https://github.com/mattermost/mattermost/issues/26205)`.
+You can find the entire issue description when clicking on the following link [Class Component Issue](https://github.com/mattermost/mattermost/issues/26205).
 
 Let us break down the issue together. Your main task is to convert the class component in the modals.test.jsx file to a 
 functional component, without making any changes to its functionality. This change might lead to tests not functioning 
