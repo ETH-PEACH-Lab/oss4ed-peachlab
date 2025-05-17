@@ -1,0 +1,5 @@
+type: theory
+custom_name: Debrief of the Course
+files:
+  - name: task.js
+    visible: true

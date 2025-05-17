@@ -1,0 +1,5 @@
+type: theory
+custom_name: "TypeScript Basics: Interfaces and Optional Properties"
+files:
+  - name: task.js
+    visible: true

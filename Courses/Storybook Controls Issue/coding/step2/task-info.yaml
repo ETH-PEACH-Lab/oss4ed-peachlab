@@ -1,0 +1,8 @@
+type: edu
+custom_name: Defining the Effective "Disable Actions" State
+files:
+  - name: task.js
+    visible: true
+  - name: test/test.js
+    visible: false
+    propagatable: false

@@ -1,0 +1,10 @@
+type: theory
+custom_name: Welcome to the Course!
+files:
+  - name: config.js
+    visible: false
+  - name: runConfigurations/runner.run.xml
+    visible: false
+    propagatable: false
+  - name: task.js
+    visible: true

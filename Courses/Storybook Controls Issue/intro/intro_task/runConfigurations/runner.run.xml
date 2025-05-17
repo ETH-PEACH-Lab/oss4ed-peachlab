@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run task: intro (intro)" type="NodeJSConfigurationType" path-to-js-file="config.js" working-dir="$PROJECT_DIR$/intro/intro_task">
+    <method v="2" />
+  </configuration>
+</component>

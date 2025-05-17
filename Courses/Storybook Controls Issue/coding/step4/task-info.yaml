@@ -1,0 +1,8 @@
+type: edu
+custom_name: Documenting the New Feature
+files:
+  - name: task.js
+    visible: true
+  - name: test/test.js
+    visible: false
+    propagatable: false

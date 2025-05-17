@@ -1,0 +1,5 @@
+type: theory
+custom_name: Introduction to Storybook and its Architecture
+files:
+  - name: task.js
+    visible: true

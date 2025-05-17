@@ -1,0 +1,5 @@
+type: theory
+custom_name: Understanding Story Parameters
+files:
+  - name: task.js
+    visible: true

@@ -1,0 +1,5 @@
+type: theory
+custom_name: Conditional Rendering in UI Components
+files:
+  - name: task.js
+    visible: true

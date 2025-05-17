@@ -1,0 +1,12 @@
+type: marketplace
+title: Storybook Controls Issue Structured Paradigm
+language: English
+programming_language: JavaScript
+content:
+  - intro
+  - theory
+  - coding
+  - debrief
+additional_files:
+  - name: package.json
+yaml_version: 2

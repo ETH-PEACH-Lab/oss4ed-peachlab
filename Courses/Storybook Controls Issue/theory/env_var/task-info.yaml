@@ -1,0 +1,5 @@
+type: theory
+custom_name: Environment Variables in JavaScript/TypeScript
+files:
+  - name: task.js
+    visible: true
