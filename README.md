@@ -4,15 +4,14 @@
 1. [Introduction](#introduction)
 2. [Fetching Data](#datafetch)
 3. [Course Creation](#coursecreation)
-4. [Benchmark](#benchmark)
 
 ## Introduction <a name="introduction"></a>
 This project is a bachelor thesis proposed by the Peach Lab at ETH. 
 
 ## Fetching Data <a name="datafetch"></a>
-The 
+This part focuses on the pipeline to automatically generated courses. It is 
+currently WIP.
 
 ## Course Creation <a name="coursecreation"></a>
-[OSS Onboarding](./OSS_Onboarding)
+All of my manually created courses can be found in the [Courses](./Courses) folder.
 
-## Benchmark <a name="benchmark"></a>
