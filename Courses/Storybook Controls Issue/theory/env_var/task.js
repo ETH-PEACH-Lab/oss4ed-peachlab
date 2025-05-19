@@ -1,4 +1,7 @@
-// todo: replace this with an actual task
-function sum(a, b) {
-    return a + b;
+// TODO: replace with code which replaces env variable value to demonstrate it to the student
+function printHelloWorld() {
+    console.log("Hello, World!");
 }
+
+// Call the function
+printHelloWorld();

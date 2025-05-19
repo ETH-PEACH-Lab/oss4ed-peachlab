@@ -1,5 +1,8 @@
-Conditional rendering is a fundamental concept in building dynamic user interfaces. It refers to the practice of displaying 
-different UI elements or content, or altering their behavior, based on certain conditions or the current state of the 
+TODO: add a few sentences why we are considering this topic. It will be not obvious for the students
+
+Conditional rendering is a fundamental concept in building dynamic user interfaces. 
+It refers to the practice of displaying different UI elements or content, 
+or altering their behavior, based on certain conditions or the current state of the 
 application. Essentially, you're instructing the system on how the UI should adapt to changing data or settings.
 
 In JavaScript and UI libraries/frameworks, conditional rendering is typically achieved using standard JavaScript control 
@@ -15,3 +18,5 @@ configuration parameters or application state. For example, an "edit" button mig
 administrative privileges, or a set of advanced options might only become visible if a user explicitly enables them.
 
 [Conditional Rendering in React](https://react.dev/learn/conditional-rendering)
+
+TODO: add a theory quizz after this lesson + if possible, show different cases with Run configuration

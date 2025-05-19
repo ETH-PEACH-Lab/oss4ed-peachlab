@@ -1,7 +1,8 @@
-In Storybook, "parameters" are a powerful mechanism for statically configuring the behavior of your stories and various 
-addons. Think of them as a set of metadata or instructions you provide alongside your story definitions. This metadata 
-is not directly part of the component's props but rather tells Storybook and its addons how to treat or render the story, 
-or how specific features of an addon should behave.
+[//]: # (TODO: add links to parameters from the source cde)
+In Storybook, _parameters_ are a powerful mechanism for statically configuring the behavior of your stories and various 
+_addons_. Think of them as a set of metadata or instructions you provide alongside your _story_ definitions. This metadata 
+is not directly part of the component's props but rather tells Storybook and its _addons_ how to treat or render the _story_, 
+or how specific features of an _addon_ should behave.
 
 ## Scope
 Parameters can be defined at different levels:
@@ -16,3 +17,5 @@ particular functionalities within an addon for a specific story or component. Th
 the Storybook environment and its features.
 
 Link: [Storybook Parameters](https://storybook.js.org/docs/writing-stories/parameters)
+
+TODO: add a few quizz lessons with questions about these entities after this lesson

@@ -1,5 +1,5 @@
 type: theory
-custom_name: Welcome to The Course!
+custom_name: Project Context
 files:
   - name: task.js
     visible: true

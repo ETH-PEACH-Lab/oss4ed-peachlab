@@ -1,0 +1,13 @@
+type: edu
+custom_name: The First Step
+files:
+  - name: task.js
+    visible: true
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: runConfigurations/runner.run.xml
+    visible: false
+    propagatable: false
+  - name: config.js
+    visible: false

@@ -10,3 +10,5 @@ content:
 additional_files:
   - name: package.json
 yaml_version: 2
+summary: |-
+  <p>dummy course description, pls fix. Use HTML formatting here</p>

@@ -1,4 +1,1 @@
-// todo: replace this with an actual task
-function sum(a, b) {
-    return a + b;
-}
+// It's a coding file, you don't need that in this task
