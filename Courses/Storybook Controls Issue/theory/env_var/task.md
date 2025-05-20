@@ -16,3 +16,5 @@ typically accessible through the `process.env` object. For example, `process.env
 ## Additional Readings
 - [Node.js Environment Variables](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs)
 - [Storybook Environment Variables](https://storybook.js.org/docs/configure/environment-variables)
+
+TODO: add a theory quizz after this lesson + if possible show different values from env variables - e.g. add a run configuration which prints an env variable and say how to change that and run again or somewthing like this

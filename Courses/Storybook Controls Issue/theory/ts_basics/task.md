@@ -1,5 +1,5 @@
-Many modern JavaScript projects, including parts of Storybook, use TypeScript. TypeScript is a superset of JavaScript 
-that adds static typing. Static typing helps catch errors early during development by allowing you to define the expected 
+Many modern JavaScript projects, including parts of Storybook, use TypeScript. 
+TypeScript is a superset of JavaScript that adds static typing. Static typing helps catch errors early during development by allowing you to define the expected 
 types of data, such as for variables, function parameters, and object properties.
 
 ## Interfaces
@@ -30,3 +30,6 @@ interface UserPreferences {
 ## Additional Readings
 - [TypeScript Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 - [TypeScript Optional Properties](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#optional-properties)
+
+TODO: I'd suggest splitting this lesson into two Interfaces and Optional Properties with adding a theory question for each of them
+also you can add main function to task js file to provide oppotunity for the student to run the code from the question and understand what is going on - add a run configuration for that for the lesson
