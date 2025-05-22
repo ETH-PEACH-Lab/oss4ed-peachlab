@@ -1,0 +1,14 @@
+type: marketplace
+title: Improve Responsiveness of Publish Button Dropdown
+language: English
+summary: <p>This course tests the pipeline presented by the PeachLab to automatically
+  create courses.</p>
+programming_language: JavaScript
+content:
+  - introduction
+  - theory
+  - coding
+  - debrief
+additional_files:
+  - name: package.json
+yaml_version: 2

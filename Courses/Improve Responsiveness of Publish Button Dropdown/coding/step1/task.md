@@ -1,0 +1,1 @@
+Define a styled component for consistent styling of dropdown items with an initial minimum width.

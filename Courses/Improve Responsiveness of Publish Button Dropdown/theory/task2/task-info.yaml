@@ -1,0 +1,5 @@
+type: theory
+custom_name: "Understanding Styled Components for UI Styling"
+files:
+  - name: task.js
+    visible: true

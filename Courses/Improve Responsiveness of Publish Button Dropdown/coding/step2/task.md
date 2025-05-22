@@ -1,0 +1,1 @@
+Adjust the width of the dropdown for better visual presentation of publish options.
