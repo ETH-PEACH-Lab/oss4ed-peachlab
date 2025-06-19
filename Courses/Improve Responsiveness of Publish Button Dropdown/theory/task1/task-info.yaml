@@ -1,5 +1,0 @@
-type: theory
-custom_name: "Understanding React Functional Components and Props"
-files:
-  - name: task.js
-    visible: true

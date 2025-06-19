@@ -1,5 +1,0 @@
-type: theory
-custom_name: "Course Summary and Next Steps"
-files:
-  - name: task.js
-    visible: true

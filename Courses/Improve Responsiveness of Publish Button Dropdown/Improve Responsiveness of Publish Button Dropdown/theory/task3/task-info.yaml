@@ -1,0 +1,5 @@
+type: theory
+custom_name: Exploring Event Handling in React
+files:
+  - name: task.js
+    visible: true

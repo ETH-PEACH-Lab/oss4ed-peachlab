@@ -1,0 +1,1 @@
+// Go to the decap-cms files to implement the following tasks of this lesson

@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run task: first_step (introduction)" type="NodeJSConfigurationType" path-to-js-file="config.js" working-dir="$PROJECT_DIR$/introduction/first_step">
+    <method v="2" />
+  </configuration>
+</component>
