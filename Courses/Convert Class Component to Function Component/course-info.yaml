@@ -1,0 +1,15 @@
+type: marketplace
+title: Convert Class Component to Function Component
+language: English
+programming_language: JavaScript
+content:
+  - introduction
+  - theory
+  - coding
+  - debrief
+additional_files:
+  - name: package.json
+  - name: package-lock.json
+  - name: GetProjectView.gif
+    is_binary: true
+yaml_version: 3

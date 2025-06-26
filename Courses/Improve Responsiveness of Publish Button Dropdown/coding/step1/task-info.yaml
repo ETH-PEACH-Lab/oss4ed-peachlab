@@ -1,0 +1,13 @@
+type: theory
+custom_name: First Step
+files:
+  - name: task.js
+    visible: true
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: selfcheck.js
+    visible: false
+  - name: runConfigurations/selfcheck.js.run.xml
+    visible: false
+    propagatable: false

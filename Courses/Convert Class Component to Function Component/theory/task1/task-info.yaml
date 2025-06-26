@@ -1,0 +1,5 @@
+type: theory
+custom_name: Understanding React.memo and PureComponent
+files:
+  - name: task.js
+    visible: true

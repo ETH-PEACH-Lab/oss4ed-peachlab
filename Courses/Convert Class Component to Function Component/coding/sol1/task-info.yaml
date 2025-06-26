@@ -1,0 +1,5 @@
+type: theory
+custom_name: "Checking First Step's Implementation"
+files:
+  - name: task.js
+    visible: true

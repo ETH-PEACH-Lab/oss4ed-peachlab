@@ -1,0 +1,5 @@
+type: theory
+custom_name: The Importance of Prop Drilling and Context API
+files:
+  - name: task.js
+    visible: true

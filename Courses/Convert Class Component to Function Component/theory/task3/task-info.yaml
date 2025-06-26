@@ -1,0 +1,5 @@
+type: theory
+custom_name: Conditional Rendering in React
+files:
+  - name: task.js
+    visible: true

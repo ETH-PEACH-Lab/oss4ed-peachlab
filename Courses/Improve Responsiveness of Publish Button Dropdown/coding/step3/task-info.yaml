@@ -1,0 +1,8 @@
+type: theory
+custom_name: Last Step
+files:
+  - name: task.js
+    visible: true
+  - name: test/test.js
+    visible: false
+    propagatable: false
