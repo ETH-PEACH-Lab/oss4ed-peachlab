@@ -1,0 +1,28 @@
+,input,prompt,title,task1,task1_links,task2,task2_links,task3,task3_links,task4,task4_links,task5,task5_links
+0,"$ISSUE = 
+$https://github.com/mattermost/mattermost/issues/29338, $PR = 
+$https://github.com/mattermost/mattermost/pull/29341","You are an instructor creating programming exercises from closed GitHub issues.
+
+            Input:
+            $ISSUE, a github url linking to the GitHub Issue
+            $PR, a link to the pull request solving the said issue.
+
+            Output: A lesson teaching the student the necessary theoretical background to solve the issue.
+            Each task of the lesson must be consice and relevant.
+            Each task should only explain ONE concept.
+            For each task, provide extra reading for the student in form of links.
+            Each task should NOT divulge any concrete solutions to solve the issue.
+            The format of the output should be as follows:
+            {
+                ""title"": the title of the lesson
+                ""tasks:  a list of each task
+            }
+            The elements of the ""tasks"" field should be in the following format:
+            {
+                ""title"": the title of the task
+                ""description"": the content of the task, explaining the theoretical concept
+                ""additional_readings"": the list of urls of the additional readings as a list of strings
+            }
+
+            You will now be given a pair of ($ISSUE, $PR). Generate the output following the instructions as closely as possible.
+",Understanding API Pagination in Web Applications,"API pagination is a technique used to divide a large dataset into smaller, manageable chunks, or 'pages'. Each page contains a limited number of results, which helps in improving performance and user experience by reducing load times. When working with RESTful APIs, pagination is necessary to retrieve large datasets in multiple requests.","['https://www.restapitutorial.com/lessons/advanced.html#pagination', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#pagination']","There are several strategies for implementing pagination in APIs. The most common methods are 'Offset-based pagination', where the client specifies an 'offset' and a 'limit' to determine which records to retrieve, and 'Cursor-based pagination', which uses a reference point (cursor) to fetch results, often improving performance and consistency.","['https://medium.com/swlh/pagination-in-rest-api-d2a094db0c4d', 'https://www.thoughtspot.com/blog/how-touse-cursor-based-pagination']","When implementing pagination, APIs often use HTTP headers to convey helpful information about the pagination state. Common headers include 'Link', which shows URLs to the next, previous, first, and last pages, and 'X-Total-Count', which indicates the total number of records available. This metadata is crucial for the client to understand how to navigate through pages.","['https://jsonapi.org/format/#pagination', 'https://dev.to/herank/pagination-in-apis-http-headers-as-a-solution-3k7e']","Client applications must handle pagination correctly to ensure a seamless user experience. This includes managing state to keep track of the current page, implementing controls for navigating between pages, and ensuring that additional requests are efficiently made to fetch more data when needed.","['https://www.apollographql.com/docs/react/data/pagination/', 'https://reactjs.org/docs/components-and-props.html#rendering-a-component']","When working with paginated APIs, you should be prepared to handle errors effectively. This includes managing scenarios where requested pages may not exist, handling rate limits, and being ready to retry requests if they fail due to server errors. Robust error handling is essential for maintaining a reliable client experience.","['https://www.restapitutorial.com/lessons/errorhandling.html', 'https://www.smashingmagazine.com/2020/04/rest-api-best-practices/']"

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "es2018", // Or "es2020", "esnext" - specifies the JavaScript version to compile to
+      "module": "commonjs", // Crucial: This tells TypeScript to compile imports to CommonJS (require())
+      "esModuleInterop": true, // Allows default imports from modules with no default export
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "outDir": "./dist" // Optional: Output compiled JS files to a 'dist' directory
+    },
+    "include": [
+      "read_from_db.ts" // Specify the files to include in compilation
+    ]
+}

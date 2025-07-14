@@ -1,0 +1,1414 @@
+[
+  {
+    "steps": [
+      {
+        "id": 0,
+        "summary": "Initial destruction of the current view instance in preparation for new configurations.",
+        "codeSteps": [
+          {
+            "summary": "Destroy the current view using the destroy method",
+            "code": "+    this.view.destroy();\n",
+            "range": {
+              "start": 305,
+              "end": 305
+            },
+            "path": "app/editor/index.tsx",
+            "id": 0
+          }
+        ]
+      },
+      {
+        "summary": "Refactoring of the reduce method to improve the return structure and inline node view creation for extending functionalities.",
+        "id": 1,
+        "codeSteps": [
+          {
+            "path": "app/editor/index.tsx",
+            "code": "-      .reduce((nodeViews, extension: ReactNode) => {\n-        const nodeView = (\n-          node: ProsemirrorNode,\n-          view: EditorView,\n-          getPos: () => number,\n-          decorations: Decoration[]\n-        ) =>\n-          new ComponentView(extension.component, {\n-            editor: this,\n-            extension,\n-            node,\n-            view,\n-            getPos,\n-            decorations,\n-          });\n-\n-        return {\n+      .reduce(\n+        (nodeViews, extension: ReactNode) => ({\n",
+            "summary": "Refactor the reduce method to directly return an object",
+            "range": {
+              "start": 352,
+              "end": 370
+            },
+            "id": 0
+          },
+          {
+            "id": 1,
+            "code": "-          [extension.name]: nodeView,\n-        };\n-      }, {});\n+          [extension.name]: (\n+            node: ProsemirrorNode,\n+            view: EditorView,\n+            getPos: () => number,\n+            decorations: Decoration[]\n+          ) =>\n+            new ComponentView(extension.component, {\n+              editor: this,\n+              extension,\n+              node,\n+              view,\n+              getPos,\n+              decorations,\n+            }),\n+        }),\n+        {}\n+      );\n",
+            "range": {
+              "end": 389,
+              "start": 370
+            },
+            "path": "app/editor/index.tsx",
+            "summary": "Refactor the object returned in reduce to define a nodeView function for each extension"
+          }
+        ]
+      }
+    ],
+    "title": "[1924989041] Exercise: Fix Full Width Image Resizing with Sidebar Events",
+    "exercise": "In this exercise, you will address an issue in the `outline` project, which is a collaborative knowledge base. The problem occurs when users toggle the visibility of sidebars while viewing documents with full width images, causing the images to not resize properly. Your objective is to ensure that full width images grow or shrink dynamically in response to sidebar visibility changes, similar to the behavior of the rest of the document body. \n\nTo accomplish this:\n1. Identify the relevant components or elements responsible for rendering full width images in the document.\n2. Implement functionality to adjust the image size according to the changes in the window or container size when sidebars are shown or hidden.\n3. Test the implementation to confirm that images respond correctly to sidebar toggle actions.",
+    "gitInfo": {
+      "repo": "https://github.com/outline/outline",
+      "pr": "https://github.com/outline/outline/pull/5950",
+      "issue": "https://github.com/outline/outline/issues/5929"
+    },
+    "id": 0
+  },
+  {
+    "title": "[1556409433] Exercise: Allow 'data' Key in FCM Overrides",
+    "id": 1,
+    "gitInfo": {
+      "pr": "https://github.com/novuhq/novu/pull/2701",
+      "repo": "https://github.com/novuhq/novu",
+      "issue": "https://github.com/novuhq/novu/issues/2603"
+    },
+    "exercise": "In this exercise, you are working with the `novu` project, which is an open-source notification platform. The goal is to enhance the functionality of the `fcm` notification overrides.\n\nCurrently, when trying to use the `data` key in the `fcm` overrides, it produces a type error indicating that 'data' does not exist in the type 'ITriggerOverrideFCM'. Your task is to update the `ITriggerOverrideFCM` interface to include the `data` key and ensure that it properly reflects the expected structure as described in the official documentation for FCM notifications. This change should allow users to pass a `data` key without encountering type errors.",
+    "steps": [
+      {
+        "codeSteps": [
+          {
+            "code": "-    | 'twilio']: object;\n+    | 'twilio']?: object;\n",
+            "id": 0,
+            "path": "packages/node/src/lib/events/events.interface.ts",
+            "summary": "Make the 'twilio' property optional in an object definition",
+            "range": {
+              "start": 50,
+              "end": 51
+            }
+          },
+          {
+            "path": "packages/node/src/lib/events/events.interface.ts",
+            "summary": "Make the 'fcm' key optional in the trigger override definition",
+            "id": 1,
+            "code": "-  [key in 'fcm']: ITriggerOverrideFCM;\n+  [key in 'fcm']?: ITriggerOverrideFCM;\n",
+            "range": {
+              "end": 53,
+              "start": 52
+            }
+          },
+          {
+            "id": 2,
+            "code": "-  [key in 'apns']: ITriggerOverrideAPNS;\n+  [key in 'apns']?: ITriggerOverrideAPNS;\n",
+            "range": {
+              "end": 55,
+              "start": 54
+            },
+            "path": "packages/node/src/lib/events/events.interface.ts",
+            "summary": "Make the 'apns' key optional in the trigger override definition"
+          },
+          {
+            "range": {
+              "start": 56,
+              "end": 57
+            },
+            "summary": "Make the 'delay' key optional in the trigger override definition",
+            "code": "-  [key in 'delay']: ITriggerOverrideDelayAction;\n+  [key in 'delay']?: ITriggerOverrideDelayAction;\n",
+            "id": 3,
+            "path": "packages/node/src/lib/events/events.interface.ts"
+          }
+        ],
+        "summary": "Making the existing keys in the override definitions optional.",
+        "id": 0
+      },
+      {
+        "summary": "Adding a new optional 'data' property to the definition.",
+        "codeSteps": [
+          {
+            "path": "packages/node/src/lib/events/events.interface.ts",
+            "id": 0,
+            "range": {
+              "end": 78,
+              "start": 78
+            },
+            "code": "+  data?: Record<string, any>;\n",
+            "summary": "Add an optional 'data' property to the definition"
+          }
+        ],
+        "id": 1
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "[2021171066] Exercise: Convert Class Component to Function Component",
+    "gitInfo": {
+      "repo": "https://github.com/mattermost/mattermost",
+      "pr": "https://github.com/mattermost/mattermost/pull/25607",
+      "issue": "https://github.com/mattermost/mattermost/issues/25595"
+    },
+    "steps": [
+      {
+        "id": 0,
+        "codeSteps": [
+          {
+            "id": 0,
+            "range": {
+              "end": 84,
+              "start": 19
+            },
+            "code": "-export default class GroupUsersRow extends React.PureComponent<Props> {\n-    render = () => {\n-        return (\n-            <div className='group-users-row'>\n-                <Avatar\n-                    username={this.props.username}\n-                    url={Client4.getProfilePictureUrl(\n-                        this.props.userId,\n-                        this.props.lastPictureUpdate,\n-                    )}\n-                    size='lg'\n-                />\n-                <div className='user-data'>\n-                    <div className='name-row'>\n-                        <span className='username'>\n-                            {'@' + this.props.username}\n-                        </span>\n-                        {'-'}\n-                        <span className='display-name'>\n-                            {this.props.displayName}\n-                        </span>\n-                    </div>\n-                    <div>\n-                        <span className='email-label'>\n-                            <FormattedMessage\n-                                id='admin.group_settings.group_details.group_users.email'\n-                                defaultMessage='Email:'\n-                            />\n-                        </span>\n-                        <span className='email'>{this.props.email}</span>\n-                    </div>\n+const GroupUsersRow = ({\n+    username,\n+    displayName,\n+    email,\n+    userId,\n+    lastPictureUpdate,\n+}: Props) => {\n+    return (\n+        <div className='group-users-row'>\n+            <Avatar\n+                username={username}\n+                url={Client4.getProfilePictureUrl(\n+                    userId,\n+                    lastPictureUpdate,\n+                )}\n+                size='lg'\n+            />\n+            <div className='user-data'>\n+                <div className='name-row'>\n+                    <span className='username'>\n+                        {'@' + username}\n+                    </span>\n+                    {'-'}\n+                    <span className='display-name'>\n+                        {displayName}\n+                    </span>\n+                </div>\n+                <div>\n+                    <span className='email-label'>\n+                        <FormattedMessage\n+                            id='admin.group_settings.group_details.group_users.email'\n+                            defaultMessage='Email:'\n+                        />\n+                    </span>\n+                    <span className='email'>{email}</span>\n",
+            "summary": "Refactor GroupUsersRow component from class to functional component using destructuring for props.",
+            "path": "webapp/channels/src/components/admin_console/group_settings/group_details/group_users_row.tsx"
+          }
+        ],
+        "summary": "Conversion of Class component to Function component with props destructuring."
+      },
+      {
+        "codeSteps": [
+          {
+            "code": "-        );\n-    };\n-}\n+        </div>\n+    );\n+};\n+\n+export default React.memo(GroupUsersRow);\n",
+            "id": 0,
+            "path": "webapp/channels/src/components/admin_console/group_settings/group_details/group_users_row.tsx",
+            "summary": "Enhance GroupUsersRow component by wrapping it with React.memo for performance optimization.",
+            "range": {
+              "end": 59,
+              "start": 52
+            }
+          }
+        ],
+        "summary": "Optimization of GroupUsersRow component performance by applying React.memo.",
+        "id": 1
+      }
+    ],
+    "exercise": "In this exercise, you will be working on the `mattermost` project, an open source platform for secure collaboration across the software development lifecycle. Your task is to convert the Class Component located in `./components/admin_console/group_settings/group_details/group_users_row.tsx` into a Function Component. This conversion should maintain the same functionality without introducing any errors.\n\nAs part of this exercise, you may also need to refactor any related tests to ensure they continue to work correctly after the transition. You should prefer using `react-testing-library` for any new tests you create, although this is not strictly required. \n\nAdditionally, when you submit your changes, ensure you clearly indicate where and when the component appears within the application so that QA can effectively test the modifications."
+  },
+  {
+    "steps": [
+      {
+        "summary": "Importing necessary React functionalities for the component.",
+        "codeSteps": [
+          {
+            "id": 0,
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "summary": "Import memo from React along with React",
+            "code": "-import React from 'react';\n+import React, {memo} from 'react';\n",
+            "range": {
+              "end": 5,
+              "start": 4
+            }
+          }
+        ],
+        "id": 0
+      },
+      {
+        "codeSteps": [
+          {
+            "range": {
+              "start": 6,
+              "end": 27
+            },
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "id": 0,
+            "code": "-export default class CheckboxPartialIcon extends React.PureComponent {\n-    render() {\n-        return (\n-            <svg\n-                width='18px'\n-                height='18px'\n-                viewBox='0 0 18 18'\n+const CheckboxPartialIcon = () => (\n+    <svg\n+        width='18px'\n+        height='18px'\n+        viewBox='0 0 18 18'\n+    >\n+        <g\n+            id='Developer-Export'\n+            stroke='none'\n+            strokeWidth='1'\n+            fillRule='evenodd'\n+        >\n+            <g\n+                transform='translate(-298.000000, -1273.000000)'\n+                id='All-Team-Members'\n",
+            "summary": "Convert CheckboxPartialIcon class to functional component using arrow function"
+          }
+        ],
+        "summary": "Converting the CheckboxPartialIcon from a class component to a functional component.",
+        "id": 1
+      },
+      {
+        "summary": "Updating the ID and transformation of group elements for semantic and layout purposes.",
+        "id": 2,
+        "codeSteps": [
+          {
+            "range": {
+              "end": 20,
+              "start": 14
+            },
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "id": 0,
+            "code": "-                <g\n-                    id='Developer-Export'\n-                    stroke='none'\n-                    strokeWidth='1'\n-                    fillRule='evenodd'\n-                >\n+                <g transform='translate(245.000000, 698.000000)'>\n",
+            "summary": "Change ID of a group element while keeping its transformation"
+          },
+          {
+            "summary": "Update the ID of a group element and adjust its transformation",
+            "id": 1,
+            "code": "-                        transform='translate(-298.000000, -1273.000000)'\n-                        id='All-Team-Members'\n+                        id='Channel-Administrators'\n+                        transform='translate(0.000000, 106.000000)'\n",
+            "range": {
+              "end": 24,
+              "start": 21
+            },
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx"
+          },
+          {
+            "id": 2,
+            "range": {
+              "end": 28,
+              "start": 24
+            },
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "summary": "Change ID and transformation of a nested group element",
+            "code": "-                        <g transform='translate(245.000000, 698.000000)'>\n+                        <g\n+                            id='data-table/column-1'\n+                            transform='translate(11.000000, 86.000000)'\n+                        >\n"
+          },
+          {
+            "summary": "Update a nested group element ID and replace it with another group ID",
+            "range": {
+              "end": 29,
+              "start": 26
+            },
+            "code": "-                                id='Channel-Administrators'\n-                                transform='translate(0.000000, 106.000000)'\n+                                id='row-checkbox---@all-@channel-Mentions'\n+                                transform='translate(0.000000, 375.000000)'\n",
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "id": 3
+          },
+          {
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "range": {
+              "start": 29,
+              "end": 33
+            },
+            "id": 4,
+            "summary": "Change ID and transformation of a deeper nested element",
+            "code": "-                                <g\n-                                    id='data-table/column-1'\n-                                    transform='translate(11.000000, 86.000000)'\n-                                >\n+                                <g id='Stacked-Group'>\n"
+          },
+          {
+            "code": "-                                        id='row-checkbox---@all-@channel-Mentions'\n-                                        transform='translate(0.000000, 375.000000)'\n+                                        id='data-table/1st/row-checkbox-label-base'\n+                                        transform='translate(25.000000, 5.000000)'\n",
+            "range": {
+              "end": 37,
+              "start": 34
+            },
+            "id": 5,
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "summary": "Modify ID of a group element and adjust its parameters"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "summary": "Finalizing the functional component structure and improving performance by using memo.",
+        "codeSteps": [
+          {
+            "id": 0,
+            "summary": "Refactor nested elements maintaining their structure and update the export to use memo for performance optimization",
+            "code": "-                                        <g id='Stacked-Group'>\n-                                            <g\n-                                                id='data-table/1st/row-checkbox-label-base'\n-                                                transform='translate(25.000000, 5.000000)'\n-                                            >\n-                                                <g\n-                                                    id='check-on-copy-11'\n-                                                    transform='translate(14.000000, 0.000000)'\n-                                                >\n-                                                    <path\n-                                                        d='M19,3 C20.1,3 21,3.9 21,5 L21,19 C21,20.1 20.1,21 19,21 L5,21 C3.9,21 3,20.1 3,19 L3,5 C3,3.9 3.9,3 5,3 L19,3 Z M7,11 L7,13 L17,13 L17,11 L7,11 Z'\n-                                                        id='checkbox---partial'\n-                                                    />\n-                                                </g>\n-                                            </g>\n+                                        <g\n+                                            id='check-on-copy-11'\n+                                            transform='translate(14.000000, 0.000000)'\n+                                        >\n+                                            <path\n+                                                d='M19,3 C20.1,3 21,3.9 21,5 L21,19 C21,20.1 20.1,21 19,21 L5,21 C3.9,21 3,20.1 3,19 L3,5 C3,3.9 3.9,3 5,3 L19,3 Z M7,11 L7,13 L17,13 L17,11 L7,11 Z'\n+                                                id='checkbox---partial'\n+                                            />\n",
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx",
+            "range": {
+              "end": 59,
+              "start": 37
+            }
+          },
+          {
+            "id": 1,
+            "range": {
+              "start": 59,
+              "end": 68
+            },
+            "code": "-            </svg>\n-        );\n-    }\n-}\n+            </g>\n+        </g>\n+    </svg>\n+);\n+\n+export default memo(CheckboxPartialIcon);\n",
+            "summary": "Complete the functional component and ensure proper export with memo",
+            "path": "webapp/channels/src/components/widgets/icons/checkbox_partial_icon.tsx"
+          }
+        ]
+      }
+    ],
+    "title": "[2047012543] Exercise: Convert CheckboxPartialIcon to Functional Component",
+    "exercise": "In this exercise, you are contributing to the project `mattermost`, an open source platform for secure collaboration across the entire software development lifecycle. Your task is to convert the `CheckboxPartialIcon` component located at `./components/widgets/icons/checkbox_partial_icon.tsx` from a Class Component to a Function Component. Ensure that there are no differences in functionality after the conversion. Additionally, check any related tests, refactor them as necessary, and prefer using `react-testing-library` for new tests, though it's not mandatory. When you submit your changes, clearly identify where and when the component is used to assist QA in properly testing your modifications.",
+    "gitInfo": {
+      "repo": "https://github.com/mattermost/mattermost",
+      "issue": "https://github.com/mattermost/mattermost/issues/25754",
+      "pr": "https://github.com/mattermost/mattermost/pull/25764"
+    },
+    "id": 11
+  },
+  {
+    "title": "[2228373064] Exercise: Convert Class Component to Function Component",
+    "exercise": "In this exercise, you are working on the `mattermost` project, which is an open source platform for secure collaboration across the entire software development lifecycle. \n\nYour task is to convert the Class Component located at `./components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx` into a Function Component. The objective is to maintain the existing functionality of the component throughout this transition.\n\nAdditionally, you need to ensure that all related tests are updated accordingly. If the tests fail due to dependencies on the Class Component behavior, they should be refactored to effectively test the same behavior within the new Function Component structure. While the use of `react-testing-library` is preferred for any new tests, it is not mandatory.\n\nAs part of your submission, please document where and when this component is utilized so that QA can adequately test the changes.",
+    "gitInfo": {
+      "issue": "https://github.com/mattermost/mattermost/issues/26691",
+      "repo": "https://github.com/mattermost/mattermost",
+      "pr": "https://github.com/mattermost/mattermost/pull/26720"
+    },
+    "steps": [
+      {
+        "summary": "Initial setup and import adjustments for the TeamListDropdown component conversion.",
+        "codeSteps": [
+          {
+            "range": {
+              "end": 6,
+              "start": 4
+            },
+            "summary": "Import memo and useCallback from React, and useIntl from react-intl.",
+            "id": 0,
+            "code": "-import React from 'react';\n+import React, {memo, useCallback} from 'react';\n+import {useIntl} from 'react-intl';\n",
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx"
+          },
+          {
+            "summary": "Remove unused localizeMessage import from utils.",
+            "id": 1,
+            "range": {
+              "start": 10,
+              "end": 11
+            },
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx",
+            "code": "-import {localizeMessage} from 'utils/utils';\n-\n"
+          }
+        ],
+        "id": 0
+      },
+      {
+        "summary": "Transformation of the TeamListDropdown from a class component to a functional component.",
+        "id": 1,
+        "codeSteps": [
+          {
+            "id": 0,
+            "summary": "Refactor TeamListDropdown class to a functional component with props.",
+            "range": {
+              "end": 36,
+              "start": 22
+            },
+            "code": "-type State = {\n-    serverError: string | null;\n-}\n-\n-export default class TeamListDropdown extends React.PureComponent<Props, State> {\n-    public constructor(props: Props) {\n-        super(props);\n+const TeamListDropdown = ({\n+    team,\n+    doRemoveUserFromTeam,\n+    doMakeUserTeamAdmin,\n+    doMakeUserTeamMember,\n+    isDisabled,\n+}: Props) => {\n+    const intl = useIntl();\n",
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx"
+          },
+          {
+            "summary": "Define team role checks such as isAdmin, isMember, and isGuest within the new functional component.",
+            "id": 1,
+            "code": "-        this.state = {\n-            serverError: null,\n-        };\n-    }\n+    const isAdmin = team.scheme_admin;\n+    const isMember = team.scheme_user && !team.scheme_admin;\n+    const isGuest = team.scheme_guest;\n+    const showMakeTeamAdmin = !isAdmin && !isGuest;\n+    const showMakeTeamMember = !isMember && !isGuest;\n",
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx",
+            "range": {
+              "end": 38,
+              "start": 30
+            }
+          },
+          {
+            "range": {
+              "end": 44,
+              "start": 35
+            },
+            "id": 2,
+            "summary": "Replace the class-based render method with a functional return statement using isDisabled prop.",
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx",
+            "code": "-    public render(): JSX.Element {\n-        const {team} = this.props;\n-        const isAdmin = team.scheme_admin;\n-        const isMember = team.scheme_user && !team.scheme_admin;\n-        const isGuest = team.scheme_guest;\n-        const showMakeTeamAdmin = !isAdmin && !isGuest;\n-        const showMakeTeamMember = !isMember && !isGuest;\n+    const makeTeamAdminOnClick = useCallback(() => doMakeUserTeamAdmin(team.id), [team.id, doMakeUserTeamAdmin]);\n+    const makeTeamMemberOnClick = useCallback(() => doMakeUserTeamMember(team.id), [team.id, doMakeUserTeamMember]);\n+    const removeUserTeamOnClick = useCallback(() => doRemoveUserFromTeam(team.id), [team.id, doRemoveUserFromTeam]);\n"
+          }
+        ]
+      },
+      {
+        "summary": "Button and action handling refactoring using hooks for component interactions.",
+        "id": 2,
+        "codeSteps": [
+          {
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx",
+            "range": {
+              "start": 43,
+              "end": 52
+            },
+            "summary": "Update button structure to include an icon inside the MenuWrapper.",
+            "id": 0,
+            "code": "-        return (\n-            <MenuWrapper\n-                isDisabled={this.props.isDisabled}\n+    return (\n+        <MenuWrapper isDisabled={isDisabled}>\n+            <button\n+                type='button'\n+                id={`teamListDropdown_${team.id}`}\n+                className='dropdown-toggle theme color--link style--none'\n+                aria-expanded='true'\n"
+          },
+          {
+            "code": "-                <button\n-                    type='button'\n-                    id={`teamListDropdown_${team.id}`}\n-                    className='dropdown-toggle theme color--link style--none'\n-                    aria-expanded='true'\n+                <span className='SystemUserDetail__actions-menu-icon'><EllipsisHorizontalIcon/></span>\n+            </button>\n+            <div>\n+                <Menu\n+                    openLeft={true}\n+                    openUp={false}\n+                    ariaLabel={intl.formatMessage({id: 'team_members_dropdown.menuAriaLabel', defaultMessage: 'Change the role of a team member'})}\n",
+            "summary": "Replace class-based Menu item actions with functional callbacks using useCallback.",
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx",
+            "id": 1,
+            "range": {
+              "start": 47,
+              "end": 58
+            }
+          },
+          {
+            "id": 2,
+            "path": "webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx",
+            "summary": "Export TeamListDropdown as a memoized component for performance optimization.",
+            "code": "-                    <span className='SystemUserDetail__actions-menu-icon'><EllipsisHorizontalIcon/></span>\n-                </button>\n-                <div>\n-                    <Menu\n-                        openLeft={true}\n-                        openUp={false}\n-                        ariaLabel={localizeMessage('team_members_dropdown.menuAriaLabel', 'Change the role of a team member')}\n-                    >\n-                        <Menu.ItemAction\n-                            id='makeTeamAdmin'\n-                            show={showMakeTeamAdmin}\n-                            onClick={() => this.props.doMakeUserTeamAdmin(team.id)}\n-                            text={localizeMessage('team_members_dropdown.makeAdmin', 'Make Team Admin')}\n-                        />\n-                        <Menu.ItemAction\n-                            show={showMakeTeamMember}\n-                            onClick={() => this.props.doMakeUserTeamMember(team.id)}\n-                            text={localizeMessage('team_members_dropdown.makeMember', 'Make Team Member')}\n-                        />\n-                        <Menu.ItemAction\n-                            id='removeFromTeam'\n-                            show={true}\n-                            onClick={() => this.props.doRemoveUserFromTeam(team.id)}\n-                            text={localizeMessage('team_members_dropdown.leave_team', 'Remove from Team')}\n-                            buttonClass='SystemUserDetail__action-remove-team'\n-                        />\n-                    </Menu>\n-                </div>\n-            </MenuWrapper>\n-        );\n-    }\n-}\n+                    <Menu.ItemAction\n+                        id='makeTeamAdmin'\n+                        show={showMakeTeamAdmin}\n+                        onClick={makeTeamAdminOnClick}\n+                        text={intl.formatMessage({id: 'team_members_dropdown.makeAdmin', defaultMessage: 'Make Team Admin'})}\n+                    />\n+                    <Menu.ItemAction\n+                        show={showMakeTeamMember}\n+                        onClick={makeTeamMemberOnClick}\n+                        text={intl.formatMessage({id: 'team_members_dropdown.makeMember', defaultMessage: 'Make Team Member'})}\n+                    />\n+                    <Menu.ItemAction\n+                        id='removeFromTeam'\n+                        show={true}\n+                        onClick={removeUserTeamOnClick}\n+                        text={intl.formatMessage({id: 'team_members_dropdown.leave_team', defaultMessage: 'Remove from Team'})}\n+                        buttonClass='SystemUserDetail__action-remove-team'\n+                    />\n+                </Menu>\n+            </div>\n+        </MenuWrapper>\n+    );\n+};\n+\n+export default memo(TeamListDropdown);\n",
+            "range": {
+              "start": 53,
+              "end": 109
+            }
+          }
+        ]
+      }
+    ],
+    "id": 12
+  },
+  {
+    "steps": [
+      {
+        "summary": "Importing necessary environment variables for the application.",
+        "id": 0,
+        "codeSteps": [
+          {
+            "code": "+import env from \"~/env\";\n",
+            "path": "app/actions/definitions/navigation.tsx",
+            "range": {
+              "end": 29,
+              "start": 29
+            },
+            "id": 0,
+            "summary": "Import the environment variables from the env module"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "codeSteps": [
+          {
+            "range": {
+              "start": 212,
+              "end": 218
+            },
+            "id": 0,
+            "path": "app/actions/definitions/navigation.tsx",
+            "code": "-  perform: () => stores.auth.logout(),\n+  perform: () => {\n+    void stores.auth.logout();\n+    if (env.OIDC_LOGOUT_URI) {\n+      window.location.replace(env.OIDC_LOGOUT_URI);\n+    }\n+  },\n",
+            "summary": "Update logout function to include optional redirection to OIDC_LOGOUT_URI after logging out"
+          }
+        ],
+        "summary": "Updating the logout functionality to support optional redirection to a specified OIDC logout URI after the logout process."
+      }
+    ],
+    "exercise": "In this exercise, you are contributing to the `Outline` project, a platform designed for creating knowledge bases for growing teams.\n\nThe current logout functionality from the wiki does not remove the OIDC (OpenID Connect) token from the session, allowing a user to log back in without re-entering their credentials. Your task is to implement the logout functionality using the OIDC provider's logout endpoint.\n\n### Requirements:\n1. Implement the logout via OIDC by calling the logout endpoint provided by the OIDC provider (e.g., Keycloak) when a user clicks 'Sign out'.\n2. To find the correct logout endpoint, you need to query the .well-known endpoint as specified in the OIDC standard.\n3. Ensure that upon signing out, the OIDC token is removed, and the user cannot automatically log in without entering their credentials again.",
+    "title": "[1335597442] Exercise: Implement OIDC Logout Functionality",
+    "id": 13,
+    "gitInfo": {
+      "repo": "https://github.com/outline/outline",
+      "pr": "https://github.com/outline/outline/pull/6539",
+      "issue": "https://github.com/outline/outline/issues/3954"
+    }
+  },
+  {
+    "gitInfo": {
+      "repo": "https://github.com/novuhq/novu",
+      "pr": "https://github.com/novuhq/novu/pull/3630",
+      "issue": "https://github.com/novuhq/novu/issues/3615"
+    },
+    "steps": [
+      {
+        "summary": "Setting properties to prevent overflow in the category column.",
+        "codeSteps": [
+          {
+            "code": "+    width: 150,\n+    maxWidth: 150,\n",
+            "range": {
+              "end": 57,
+              "start": 56
+            },
+            "path": "apps/web/src/pages/templates/WorkflowListPage.tsx",
+            "summary": "Set the width and maxWidth properties to 150",
+            "id": 0
+          }
+        ],
+        "id": 0
+      },
+      {
+        "summary": "Updating the category label display to use a styled component for better visual consistency.",
+        "codeSteps": [
+          {
+            "path": "apps/web/src/pages/templates/WorkflowListPage.tsx",
+            "range": {
+              "start": 57,
+              "end": 58
+            },
+            "code": "-      <Tag data-test-id=\"category-label\"> {original.notificationGroup?.name}</Tag>\n+      <StyledTag data-test-id=\"category-label\"> {original.notificationGroup?.name}</StyledTag>\n",
+            "id": 0,
+            "summary": "Change the Tag component to StyledTag for category label display"
+          },
+          {
+            "summary": "Define a new styled component StyledTag with specific styling",
+            "id": 1,
+            "range": {
+              "end": 276,
+              "start": 269
+            },
+            "path": "apps/web/src/pages/templates/WorkflowListPage.tsx",
+            "code": "+\n+const StyledTag = styled(Tag)`\n+  max-width: 100%;\n+\n+  span {\n+    max-width: 100%;\n+  }\n+`;\n"
+          }
+        ],
+        "id": 1
+      }
+    ],
+    "id": 14,
+    "title": "[1762401792] Exercise: Fix Workflows Visual Bug",
+    "exercise": "In this exercise, you are contributing to the `novu` project, an open-source notification platform that handles various types of notifications. Your task is to fix a visual bug in the Workflows page where the `Category` and `Created At` columns overlap when the `Category` has a longer name. To solve this, you should ensure that the columns within the Workflows table display correctly and do not overlap, similar to the expected behavior shown in the reference image. This may involve adding a limit to the character count for the `Category` column or implementing CSS styling to handle overflow properly."
+  },
+  {
+    "gitInfo": {
+      "repo": "https://github.com/mattermost/mattermost",
+      "pr": "https://github.com/mattermost/mattermost/pull/26725",
+      "issue": "https://github.com/mattermost/mattermost/issues/26681"
+    },
+    "exercise": "In this exercise, you will update the `SidebarRightMenu` component located in `./components/sidebar_right_menu/sidebar_right_menu.tsx` from a Class Component to a Function Component. The goal is to fully migrate the existing functionality to the new component format without losing any current behavior. Additionally, identify and refactor any related tests that may not function correctly due to this change, ensuring they validate the same behavior in the functional context. You should prefer to use `react-testing-library` for new tests where applicable.",
+    "id": 15,
+    "title": "[2228372197] Exercise: Convert Class Component to Function Component in Sidebar Right Menu",
+    "steps": [
+      {
+        "summary": "Removal of unnecessary imports from the SidebarRightMenu component for code quality improvements.",
+        "codeSteps": [
+          {
+            "range": {
+              "end": 6,
+              "start": 5
+            },
+            "code": "-import {bindActionCreators} from 'redux';\n-import type {Dispatch} from 'redux';\n",
+            "path": "webapp/channels/src/components/sidebar_right_menu/index.ts",
+            "summary": "Remove unnecessary imports of bindActionCreators and Dispatch from redux",
+            "id": 0
+          },
+          {
+            "path": "webapp/channels/src/components/sidebar_right_menu/index.ts",
+            "summary": "Remove the import statement for openRhsMenu from actions",
+            "range": {
+              "end": 11,
+              "start": 11
+            },
+            "code": "-import {openMenu as openRhsMenu} from 'actions/views/rhs';\n",
+            "id": 1
+          }
+        ],
+        "id": 0
+      },
+      {
+        "id": 1,
+        "codeSteps": [
+          {
+            "path": "webapp/channels/src/components/sidebar_right_menu/index.ts",
+            "code": "-function mapDispatchToProps(dispatch: Dispatch) {\n-    return {\n-        actions: bindActionCreators({\n-            openRhsMenu,\n-        }, dispatch),\n-    };\n-}\n-\n-export default connect(mapStateToProps, mapDispatchToProps)(SidebarRightMenu);\n+export default connect(mapStateToProps)(SidebarRightMenu);\n",
+            "id": 0,
+            "summary": "Eliminate mapDispatchToProps function for connecting SidebarRightMenu to the Redux store",
+            "range": {
+              "end": 42,
+              "start": 33
+            }
+          }
+        ],
+        "summary": "Refactor the SidebarRightMenu component to eliminate the mapDispatchToProps function, simplifying the connection to the Redux store."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "gitInfo": {
+      "issue": "https://github.com/apache/superset/issues/17630",
+      "repo": "https://github.com/apache/superset",
+      "pr": "https://github.com/apache/superset/pull/17700"
+    },
+    "steps": [
+      {
+        "id": 0,
+        "summary": "Import new utilities and assets for SQL Table handling.",
+        "codeSteps": [
+          {
+            "range": {
+              "end": 24,
+              "start": 23
+            },
+            "path": "superset-frontend/src/SqlLab/components/App/index.jsx",
+            "code": "-import { t, supersetTheme, ThemeProvider } from '@superset-ui/core';\n+import { t, supersetTheme, ThemeProvider, styled } from '@superset-ui/core';\n",
+            "summary": "Import styled utility from '@superset-ui/core' module",
+            "id": 0
+          },
+          {
+            "id": 1,
+            "range": {
+              "start": 33,
+              "end": 33
+            },
+            "summary": "Import empty SQL chart image from assets",
+            "path": "superset-frontend/src/SqlLab/components/App/index.jsx",
+            "code": "+import emptySqlChart from 'src/assets/images/empty_sql_chart.png';\n"
+          }
+        ]
+      },
+      {
+        "summary": "Define styled components and conditionally render an image for empty SQL tabs.",
+        "codeSteps": [
+          {
+            "code": "+\n+    const StyledImage = styled.div`\n+      right: 50%;\n+      bottom: 50%;\n+      transform: translate(50%, 50%);\n+      position: absolute;\n+    `;\n",
+            "range": {
+              "end": 106,
+              "start": 100
+            },
+            "summary": "Define a styled div component for centered positioning",
+            "id": 0,
+            "path": "superset-frontend/src/SqlLab/components/App/index.jsx"
+          },
+          {
+            "id": 1,
+            "code": "+          {this.props.queryEditors.length === 0 && (\n+            <StyledImage>\n+              <img src={emptySqlChart} alt=\"No SQL tabs\" />\n+            </StyledImage>\n+          )}\n",
+            "summary": "Conditionally render a StyledImage component if there are no query editors",
+            "path": "superset-frontend/src/SqlLab/components/App/index.jsx",
+            "range": {
+              "end": 126,
+              "start": 122
+            }
+          }
+        ],
+        "id": 1
+      },
+      {
+        "id": 2,
+        "summary": "Update PropTypes and component state to include SQL Lab's query editors.",
+        "codeSteps": [
+          {
+            "code": "+  queryEditors: PropTypes.array,\n",
+            "id": 0,
+            "range": {
+              "start": 132,
+              "end": 132
+            },
+            "summary": "Add a new PropTypes definition for queryEditors",
+            "path": "superset-frontend/src/SqlLab/components/App/index.jsx"
+          },
+          {
+            "range": {
+              "start": 136,
+              "end": 137
+            },
+            "summary": "Include sqlLab in the destructured state object",
+            "id": 1,
+            "path": "superset-frontend/src/SqlLab/components/App/index.jsx",
+            "code": "-  const { common, localStorageUsageInKilobytes } = state;\n+  const { common, localStorageUsageInKilobytes, sqlLab } = state;\n"
+          },
+          {
+            "range": {
+              "end": 140,
+              "start": 140
+            },
+            "code": "+    queryEditors: sqlLab.queryEditors,\n",
+            "path": "superset-frontend/src/SqlLab/components/App/index.jsx",
+            "summary": "Assign sqlLab's queryEditors to the component's state",
+            "id": 2
+          }
+        ]
+      }
+    ],
+    "title": "[1069216148] Exercise: Prevent Blank Screen in SQL Lab",
+    "exercise": "In this exercise, you will be working on `superset`, an open-source data visualization and exploration platform. You need to enhance the functionality of the SQL Lab section of the application. Currently, when a user closes all tabs in SQL Lab, the screen goes blank due to the absence of any open tabs. Your goal is to ensure that a new empty tab opens automatically when all existing tabs are closed, preventing the screen from becoming blank. This functionality aligns with how clicking SQL Lab in the menu operates, where it correctly opens an empty tab. Modify the necessary components in the SQL Lab to implement this feature."
+  },
+  {
+    "exercise": "In this exercise, you are contributing to the project `novu`, which is an open-source notification platform that provides various integrations, including push notifications. Currently, there is a bug where the 'Production' toggle for APNs integration does not persist its value after being turned off. Your task is to ensure that when a user toggles the 'Production' value off and saves the settings, it should remain off when the integration settings are reopened. This involves identifying the part of the code that handles the saving of this toggle state and implementing the necessary fixes to persist the value in the database.",
+    "gitInfo": {
+      "issue": "https://github.com/novuhq/novu/issues/3360",
+      "pr": "https://github.com/novuhq/novu/pull/3430",
+      "repo": "https://github.com/novuhq/novu"
+    },
+    "id": 2,
+    "steps": [
+      {
+        "id": 0,
+        "summary": "Importing necessary decorators for boolean transformation and validation.",
+        "codeSteps": [
+          {
+            "id": 0,
+            "code": "-import { IsObject, IsOptional, IsString } from 'class-validator';\n-import { IsBooleanAny } from '../../shared/validators/is-boolean-any.validator';\n+import { IsBoolean, IsObject, IsOptional, IsString } from 'class-validator';\n+import { TransformToBoolean } from '../../shared/transformers/to-boolean';\n",
+            "summary": "Import IsBoolean and TransformToBoolean from external modules",
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "range": {
+              "end": 5,
+              "start": 2
+            }
+          }
+        ]
+      },
+      {
+        "codeSteps": [
+          {
+            "code": "+  @TransformToBoolean()\n+  @IsBoolean()\n",
+            "summary": "Add TransformToBoolean and IsBoolean decorators",
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "range": {
+              "end": 43,
+              "start": 42
+            },
+            "id": 0
+          },
+          {
+            "id": 1,
+            "code": "+  @TransformToBoolean()\n+  @IsBoolean()\n",
+            "range": {
+              "start": 92,
+              "end": 93
+            },
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "summary": "Add TransformToBoolean and IsBoolean decorators"
+          },
+          {
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "code": "+  @TransformToBoolean()\n+  @IsBoolean()\n",
+            "range": {
+              "end": 98,
+              "start": 97
+            },
+            "summary": "Add TransformToBoolean and IsBoolean decorators",
+            "id": 2
+          }
+        ],
+        "id": 1,
+        "summary": "Adding and utilizing TransformToBoolean and IsBoolean decorators in the credentials DTO."
+      },
+      {
+        "summary": "Removing obsolete IsBooleanAny decorators from the credentials DTO.",
+        "id": 2,
+        "codeSteps": [
+          {
+            "range": {
+              "start": 43,
+              "end": 43
+            },
+            "summary": "Remove IsBooleanAny decorator",
+            "code": "-  @IsBooleanAny()\n",
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "id": 0
+          },
+          {
+            "id": 1,
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "summary": "Remove IsBooleanAny decorator",
+            "code": "-  @IsBooleanAny()\n",
+            "range": {
+              "start": 93,
+              "end": 93
+            }
+          },
+          {
+            "id": 2,
+            "summary": "Remove IsBooleanAny decorator",
+            "range": {
+              "end": 98,
+              "start": 98
+            },
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "code": "-  @IsBooleanAny()\n"
+          }
+        ]
+      },
+      {
+        "summary": "Adding additional decorators, IsString and IsOptional, for enhanced validation in the credentials DTO.",
+        "codeSteps": [
+          {
+            "code": "+  @IsString()\n+  @IsOptional()\n",
+            "range": {
+              "end": 107,
+              "start": 106
+            },
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "summary": "Add IsString and IsOptional decorators",
+            "id": 0
+          },
+          {
+            "id": 1,
+            "range": {
+              "end": 109,
+              "start": 108
+            },
+            "summary": "Add IsString and IsOptional decorators",
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "code": "+  @IsString()\n+  @IsOptional()\n"
+          }
+        ],
+        "id": 3
+      },
+      {
+        "codeSteps": [
+          {
+            "id": 0,
+            "summary": "Add empty line",
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "range": {
+              "end": 105,
+              "start": 105
+            },
+            "code": "+\n"
+          },
+          {
+            "summary": "Add empty line",
+            "id": 1,
+            "range": {
+              "end": 107,
+              "start": 107
+            },
+            "path": "apps/api/src/app/integrations/dtos/credentials.dto.ts",
+            "code": "+\n"
+          }
+        ],
+        "summary": "Inserting empty lines for code readability and organization in the credentials DTO.",
+        "id": 4
+      }
+    ],
+    "title": "[1701302161] Exercise: Fix APNs Production Toggle Persistence"
+  },
+  {
+    "steps": [
+      {
+        "id": 0,
+        "codeSteps": [
+          {
+            "range": {
+              "start": 237,
+              "end": 240
+            },
+            "path": "packages/netlify-cms-core/src/components/Editor/EditorToolbar.js",
+            "id": 0,
+            "summary": "Define a styled component called PublishDropDownItem with an initial minimum width",
+            "code": "+const PublishDropDownItem = styled(DropdownItem)`\n+  min-width: initial;\n+`;\n+\n"
+          }
+        ],
+        "summary": "Define a styled component for consistent styling of dropdown items with an initial minimum width."
+      },
+      {
+        "codeSteps": [
+          {
+            "range": {
+              "end": 409,
+              "start": 408
+            },
+            "summary": "Change the dropdown width from 150px to 200px",
+            "id": 0,
+            "path": "packages/netlify-cms-core/src/components/Editor/EditorToolbar.js",
+            "code": "-        dropdownWidth=\"150px\"\n+        dropdownWidth=\"200px\"\n"
+          }
+        ],
+        "id": 1,
+        "summary": "Adjust the width of the dropdown for better visual presentation of publish options."
+      },
+      {
+        "codeSteps": [
+          {
+            "code": "-        <DropdownItem\n+        <PublishDropDownItem\n",
+            "range": {
+              "start": 417,
+              "end": 418
+            },
+            "summary": "Replace DropdownItem with PublishDropDownItem in the JSX",
+            "id": 0,
+            "path": "packages/netlify-cms-core/src/components/Editor/EditorToolbar.js"
+          },
+          {
+            "path": "packages/netlify-cms-core/src/components/Editor/EditorToolbar.js",
+            "summary": "Replace DropdownItem with PublishDropDownItem in the JSX",
+            "code": "-            <DropdownItem\n+            <PublishDropDownItem\n",
+            "range": {
+              "end": 426,
+              "start": 425
+            },
+            "id": 1
+          },
+          {
+            "code": "-            <DropdownItem\n+            <PublishDropDownItem\n",
+            "id": 2,
+            "path": "packages/netlify-cms-core/src/components/Editor/EditorToolbar.js",
+            "summary": "Replace DropdownItem with PublishDropDownItem in the JSX",
+            "range": {
+              "end": 431,
+              "start": 430
+            }
+          }
+        ],
+        "summary": "Refactor code to use the new styled component for dropdown items in multiple instances.",
+        "id": 2
+      }
+    ],
+    "gitInfo": {
+      "repo": "https://github.com/decaporg/decap-cms",
+      "issue": "https://github.com/decaporg/decap-cms/issues/6355",
+      "pr": "https://github.com/decaporg/decap-cms/pull/6796"
+    },
+    "title": "[1188050598] Exercise: Improve Responsiveness of Publish Button Dropdown",
+    "exercise": "In this exercise, you will work on the `decap-cms`, a Git-based CMS for Static Site Generators. You need to address a UI issue with the 'Publish' button dropdown in the CMS interface, which is unresponsive when switching to the French locale. The text in the dropdown options is also cropped.\n\n**Task:** \n- Modify the CSS properties of the dropdown that appears when clicking the 'Publish' button to ensure it is responsive. The dropdown should either adapt its width to fit the content or have a larger minimum width to accommodate all potential text options in different languages. \n\nTo reproduce the issue, change the locale to French in `config.yml`, navigate to publish a post, and observe the dropdown behavior. Your goal is to enhance the aesthetics and overall user experience of the CMS when publishing posts in different languages.",
+    "id": 3
+  },
+  {
+    "exercise": "In this exercise, you are contributing to the project `mattermost`, an open source platform for secure collaboration across the entire software development lifecycle. \n\nThe current implementation of the web application and the command-line tool `mmctl` does not return the full list of incoming webhooks when there are more than 203 webhooks created. Your task is to address this pagination issue so that both the web application and `mmctl` return the complete list of incoming webhooks, similar to the behavior of the command './mmctl user list --all'. \n\nTo replicate the issue, use the provided curl commands to create multiple incoming webhooks and check the returned list via API calls and `mmctl`. Ensure that the pagination is functioning correctly and that the full result set is retrievable when the number of incoming webhooks exceeds the default pagination limit.",
+    "title": "[2231323311] Exercise: Fix Incoming Webhooks Pagination in Webapp and mmctl",
+    "gitInfo": {
+      "issue": "https://github.com/mattermost/mattermost/issues/26715",
+      "repo": "https://github.com/mattermost/mattermost",
+      "pr": "https://github.com/mattermost/mattermost/pull/27502"
+    },
+    "steps": [
+      {
+        "summary": "Initialization of variables necessary for handling incoming webhooks data.",
+        "id": 0,
+        "codeSteps": [
+          {
+            "code": "+\t\tjs     []byte\n+\t\terr    error\n",
+            "summary": "Declare variables js as []byte and err as error",
+            "range": {
+              "end": 188,
+              "start": 187
+            },
+            "id": 0,
+            "path": "server/channels/api4/webhook.go"
+          }
+        ]
+      },
+      {
+        "codeSteps": [
+          {
+            "path": "server/channels/api4/webhook.go",
+            "range": {
+              "end": 234,
+              "start": 220
+            },
+            "id": 0,
+            "code": "-\tjs, err := json.Marshal(hooks)\n+\tif c.Params.IncludeTotalCount {\n+\t\ttotalCount, appErr := c.App.GetIncomingWebhooksCount(teamID, userID)\n+\n+\t\tif appErr != nil {\n+\t\t\tc.Err = appErr\n+\t\t\treturn\n+\t\t}\n+\n+\t\thooksWithCount := model.IncomingWebhooksWithCount{Webhooks: hooks, TotalCount: totalCount}\n+\t\tjs, err = json.Marshal(hooksWithCount)\n+\t} else {\n+\t\tjs, err = json.Marshal(hooks)\n+\t}\n+\n",
+            "summary": "Conditionally marshal hooks with total count or just hooks based on the IncludeTotalCount parameter"
+          }
+        ],
+        "summary": "Implementation of conditional logic to optionally include total count in the marshaled webhooks response based on a parameter.",
+        "id": 1
+      }
+    ],
+    "id": 4
+  },
+  {
+    "id": 5,
+    "gitInfo": {
+      "issue": "https://github.com/ant-design/ant-design/issues/39985",
+      "repo": "https://github.com/ant-design/ant-design",
+      "pr": "https://github.com/ant-design/ant-design/pull/39992"
+    },
+    "title": "[1517358183] Exercise: Fix Button Block Property in Ant Design",
+    "exercise": "In this exercise, you are contributing to the `ant-design` project, which is an enterprise-class UI design language and React UI library. Your task is to ensure that the `block` prop on the `Button` component functions as expected. Currently, when the `block` prop is set to true, the button does not take up 100 percent of its parent width within a form. \n\nTo replicate the problem, add the following code to your Ant Design form:\n```jsx\n<Form.Item>\n    <Button size=\"large\"\n            form=\"auth\"\n            type=\"primary\"\n            shape=\"round\"\n            htmlType=\"submit\"\n            block>\n        Submit\n    </Button>\n</Form.Item>\n```\n\nYour objective is to fix the implementation of the `block` prop so that the button occupies the full width of the parent container. Please ensure that this change maintains the existing functionality of the button and does not introduce any breaking changes.",
+    "steps": [
+      {
+        "id": 0,
+        "codeSteps": [
+          {
+            "summary": "Set the width to 'auto'",
+            "code": "-  width: 'auto',\n",
+            "id": 0,
+            "range": {
+              "start": 116,
+              "end": 116
+            },
+            "path": "components/button/style/index.ts"
+          },
+          {
+            "summary": "Add a style rule for the round variant with auto width based on component class",
+            "path": "components/button/style/index.ts",
+            "code": "-\n+          [`&${componentCls}-round`]: {\n+            width: 'auto',\n+          },\n",
+            "id": 1,
+            "range": {
+              "end": 419,
+              "start": 416
+            }
+          }
+        ],
+        "summary": "Initial fix to set the button width to 'auto'."
+      },
+      {
+        "codeSteps": [
+          {
+            "code": "-  const { componentCls, iconCls } = token;\n-\n-  const paddingVertical = Math.max(\n-    0,\n-    (token.controlHeight - token.fontSize * token.lineHeight) / 2 - token.lineWidth,\n-  );\n-  const paddingHorizontal = token.buttonPaddingHorizontal - token.lineWidth;\n+  const {\n+    componentCls,\n+    iconCls,\n+    controlHeight,\n+    fontSize,\n+    lineHeight,\n+    lineWidth,\n+    borderRadius,\n+    buttonPaddingHorizontal,\n+  } = token;\n+\n+  const paddingVertical = Math.max(0, (controlHeight - fontSize * lineHeight) / 2 - lineWidth);\n+  const paddingHorizontal = buttonPaddingHorizontal - lineWidth;\n",
+            "summary": "Destructure additional properties from token for layout customization",
+            "range": {
+              "end": 412,
+              "start": 393
+            },
+            "id": 0,
+            "path": "components/button/style/index.ts"
+          },
+          {
+            "summary": "Use destructured controlHeight in place of token.controlHeight",
+            "id": 1,
+            "code": "-        fontSize: token.fontSize,\n-        height: token.controlHeight,\n+        fontSize,\n+        height: controlHeight,\n",
+            "range": {
+              "end": 410,
+              "start": 407
+            },
+            "path": "components/button/style/index.ts"
+          },
+          {
+            "path": "components/button/style/index.ts",
+            "summary": "Use destructured borderRadius in place of token.borderRadius",
+            "range": {
+              "start": 410,
+              "end": 411
+            },
+            "id": 2,
+            "code": "-        borderRadius: token.borderRadius,\n+        borderRadius,\n"
+          },
+          {
+            "code": "-          width: token.controlHeight,\n+          width: controlHeight,\n",
+            "range": {
+              "end": 414,
+              "start": 413
+            },
+            "id": 3,
+            "path": "components/button/style/index.ts",
+            "summary": "Use destructured controlHeight in place of token.controlHeight for width"
+          }
+        ],
+        "summary": "Destructure properties from the token for customization.",
+        "id": 1
+      }
+    ]
+  },
+  {
+    "exercise": "In this exercise, you are contributing to the `mattermost` project, an open source platform for secure collaboration across the entire software development lifecycle. \n\nYour task is to convert the class component located at `./components/admin_console/filter/filter_list.tsx` into a functional component, ensuring that all existing functionality remains intact. Additionally, you will need to refactor any related tests that fail as a result of this conversion. It is recommended to use `react-testing-library` for any new tests. \n\nWhen submitting your changes, make sure to clarify where and when the component appears in the application to assist QA in properly testing your updates.",
+    "id": 6,
+    "steps": [
+      {
+        "codeSteps": [
+          {
+            "range": {
+              "start": 4,
+              "end": 5
+            },
+            "id": 0,
+            "summary": "Import memo and useCallback hooks from React",
+            "code": "-import React from 'react';\n+import React, {memo, useCallback} from 'react';\n",
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx"
+          }
+        ],
+        "id": 0,
+        "summary": "Initial setup by importing necessary hooks from React to support functional components."
+      },
+      {
+        "codeSteps": [
+          {
+            "code": "-class FilterList extends React.PureComponent<Props> {\n-    updateOption = async (value: boolean, key: string) => {\n+const FilterList = ({\n+    option,\n+    optionKey,\n+    updateValues,\n+}: Props) => {\n+    const updateOption = useCallback(async (value: boolean, key: string) => {\n",
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx",
+            "summary": "Convert FilterList class component to functional component with props",
+            "range": {
+              "start": 17,
+              "end": 24
+            },
+            "id": 0
+          },
+          {
+            "range": {
+              "start": 20,
+              "end": 21
+            },
+            "code": "-            ...this.props.option.values,\n+            ...option.values,\n",
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx",
+            "summary": "Update option values reference from this.props to props in functional component",
+            "id": 1
+          },
+          {
+            "id": 2,
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx",
+            "code": "-                ...this.props.option.values[key],\n+                ...option.values[key],\n",
+            "summary": "Update option values reference from this.props to props in functional component",
+            "range": {
+              "end": 23,
+              "start": 22
+            }
+          },
+          {
+            "code": "-        await this.props.updateValues(values, this.props.optionKey);\n-    };\n+        await updateValues(values, optionKey);\n+    }, [option.values, optionKey, updateValues]);\n",
+            "id": 3,
+            "summary": "Refactor updateValues invocation to use props destructuring from functional component",
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx",
+            "range": {
+              "start": 26,
+              "end": 29
+            }
+          }
+        ],
+        "summary": "Conversion of the class component to a functional component, including props handling and updating method definitions.",
+        "id": 1
+      },
+      {
+        "codeSteps": [
+          {
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx",
+            "range": {
+              "end": 54,
+              "start": 29
+            },
+            "id": 0,
+            "summary": "Map over option keys to render FilterItems instead of using this.props",
+            "code": "-    render() {\n-        const {option} = this.props;\n-        const valuesToRender = option.keys.map((optionKey: string, index: number) => {\n-            const currentValue = option.values[optionKey];\n-            const {value, name} = currentValue;\n-            const FilterItem = option.type || FilterCheckbox;\n-\n-            return (\n-                <div\n-                    key={index}\n-                    className='FilterList_item'\n-                >\n-                    <FilterItem\n-                        key={index}\n-                        name={optionKey}\n-                        checked={value}\n-                        label={name}\n-                        updateOption={this.updateOption}\n-                    />\n-                </div>\n-            );\n-        });\n+    const valuesToRender = option.keys.map((optionKey: string, index: number) => {\n+        const currentValue = option.values[optionKey];\n+        const {value, name} = currentValue;\n+        const FilterItem = option.type || FilterCheckbox;\n"
+          },
+          {
+            "code": "-            <div className='FilterList'>\n-                <div className='FilterList_name'>\n-                    {option.name}\n-                </div>\n-\n-                {valuesToRender}\n+            <div\n+                key={index}\n+                className='FilterList_item'\n+            >\n+                <FilterItem\n+                    key={index}\n+                    name={optionKey}\n+                    checked={value}\n+                    label={name}\n+                    updateOption={updateOption}\n+                />\n",
+            "id": 1,
+            "summary": "Refactor rendering of FilterItems and add logical structure in functional component",
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx",
+            "range": {
+              "end": 69,
+              "start": 53
+            }
+          }
+        ],
+        "id": 2,
+        "summary": "Refactoring of rendering methods to eliminate use of `this.props` and implement props destructuring for rendering FilterItems."
+      },
+      {
+        "codeSteps": [
+          {
+            "id": 0,
+            "range": {
+              "start": 61,
+              "end": 74
+            },
+            "code": "-    }\n-}\n+    });\n+\n+    return (\n+        <div className='FilterList'>\n+            <div className='FilterList_name'>\n+                {option.name}\n+            </div>\n+\n+            {valuesToRender}\n+        </div>\n+    );\n+};\n",
+            "summary": "Close functional component and return the FilterList structure",
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx"
+          },
+          {
+            "summary": "Export FilterList wrapped in memo for performance optimization",
+            "code": "-export default FilterList;\n+export default memo(FilterList);\n",
+            "path": "webapp/channels/src/components/admin_console/filter/filter_list.tsx",
+            "range": {
+              "end": 65,
+              "start": 64
+            },
+            "id": 1
+          }
+        ],
+        "summary": "Finalization steps including returning the entire component structure and exporting it wrapped in memo for performance optimization.",
+        "id": 3
+      }
+    ],
+    "gitInfo": {
+      "repo": "https://github.com/mattermost/mattermost",
+      "issue": "https://github.com/mattermost/mattermost/issues/25755",
+      "pr": "https://github.com/mattermost/mattermost/pull/25765"
+    },
+    "title": "[2047012612] Exercise: Convert Class Component to Functional Component"
+  },
+  {
+    "gitInfo": {
+      "issue": "https://github.com/mattermost/mattermost/issues/25602",
+      "repo": "https://github.com/mattermost/mattermost",
+      "pr": "https://github.com/mattermost/mattermost/pull/25651"
+    },
+    "title": "[2021171481] Exercise: Convert Class Component to Function Component",
+    "exercise": "In this exercise, you will be updating the `AccordionToggleIcon` component located at `./components/widgets/icons/accordion_toggle_icon.tsx` in the `mattermost` project. The goal is to refactor this Class Component into a Function Component while preserving its existing functionality. \n\nAdditionally, ensure that all related tests for the component are also updated to work correctly with the new Function Component. If current tests fail due to reliance on Class Component behavior, they will need to be refactored to test the same functionality in the new implementation. \n\nConsider using `react-testing-library` for creating or updating tests, although it is not strictly required. \n\nFinally, when submitting your changes, identify where and when this component is used within the application to facilitate QA testing.",
+    "id": 7,
+    "steps": [
+      {
+        "summary": "Refactor AccordionToggleIcon to a functional component while retaining props and structure.",
+        "codeSteps": [
+          {
+            "code": "-export default class AccordionToggleIcon extends React.PureComponent<React.HTMLAttributes<HTMLSpanElement>> {\n-    render(): JSX.Element {\n-        return (\n-            <span {...this.props}>\n-                <svg\n-                    width='30px'\n-                    height='30px'\n-                    viewBox='0 0 30 30'\n+export default function AccordionToggleIcon(\n+    props: React.HTMLAttributes<HTMLSpanElement>,\n+) {\n+    return (\n+        <span {...props}>\n+            <svg\n+                width='30px'\n+                height='30px'\n+                viewBox='0 0 30 30'\n+            >\n+                <g\n+                    id='Developer-Export'\n+                    stroke='none'\n+                    strokeWidth='1'\n+                    fill='none'\n+                    fillRule='evenodd'\n",
+            "range": {
+              "start": 6,
+              "end": 29
+            },
+            "id": 0,
+            "path": "webapp/channels/src/components/widgets/icons/accordion_toggle_icon.tsx",
+            "summary": "Convert the AccordionToggleIcon from a class component to a functional component while maintaining props."
+          }
+        ],
+        "id": 0
+      },
+      {
+        "summary": "Make updates to the SVG's group ID and styling attributes for better alignment and semantics.",
+        "codeSteps": [
+          {
+            "path": "webapp/channels/src/components/widgets/icons/accordion_toggle_icon.tsx",
+            "range": {
+              "end": 22,
+              "start": 16
+            },
+            "summary": "Change the ID and attributes of the SVG group element for styling.",
+            "id": 0,
+            "code": "-                        id='Developer-Export'\n-                        stroke='none'\n-                        strokeWidth='1'\n-                        fill='none'\n-                        fillRule='evenodd'\n+                        transform='translate(-995.000000, -1372.000000)'\n+                        id='All-Team-Members'\n"
+          }
+        ],
+        "id": 1
+      },
+      {
+        "codeSteps": [
+          {
+            "path": "webapp/channels/src/components/widgets/icons/accordion_toggle_icon.tsx",
+            "code": "-                        <g\n-                            transform='translate(-995.000000, -1372.000000)'\n-                            id='All-Team-Members'\n-                        >\n-                            <g transform='translate(245.000000, 698.000000)'>\n-                                <g\n-                                    id='Team-Administrators'\n-                                    transform='translate(0.000000, 651.000000)'\n-                                >\n-                                    <g id='accordion-header'>\n-                                        <g\n-                                            id='accordion---expanded'\n-                                            transform='translate(750.000000, 23.000000)'\n-                                        >\n-                                            <path\n-                                                d='M23.1484532,13.3124932 C23.3437659,13.1171805 23.3437659,12.7968676 23.1484532,12.6015549 L21.8515766,11.3124908 C21.6562639,11.1171781 21.3437635,11.1171781 21.1484508,11.3124908 L15.0000083,17.4609333 L8.8515659,11.3124908 C8.65625317,11.1171781 8.34375279,11.1171781 8.14844006,11.3124908 L6.85156352,12.6015549 C6.65625078,12.7968676 6.65625078,13.1171805 6.85156352,13.3124932 L14.6484454,21.1015626 C14.8437582,21.2968754 15.1562585,21.2968754 15.3515713,21.1015626 L23.1484532,13.3124932 Z'\n-                                                id=''\n-                                                fill='#979797'\n-                                            />\n-                                            <circle\n-                                                id='Oval-2'\n-                                                stroke='#989898'\n-                                                strokeWidth='2'\n-                                                cx='15'\n-                                                cy='15'\n-                                                r='14'\n-                                            />\n-                                        </g>\n+                        <g transform='translate(245.000000, 698.000000)'>\n+                            <g\n+                                id='Team-Administrators'\n+                                transform='translate(0.000000, 651.000000)'\n+                            >\n+                                <g id='accordion-header'>\n+                                    <g\n+                                        id='accordion---expanded'\n+                                        transform='translate(750.000000, 23.000000)'\n+                                    >\n+                                        <path\n+                                            d='M23.1484532,13.3124932 C23.3437659,13.1171805 23.3437659,12.7968676 23.1484532,12.6015549 L21.8515766,11.3124908 C21.6562639,11.1171781 21.3437635,11.1171781 21.1484508,11.3124908 L15.0000083,17.4609333 L8.8515659,11.3124908 C8.65625317,11.1171781 8.34375279,11.1171781 8.14844006,11.3124908 L6.85156352,12.6015549 C6.65625078,12.7968676 6.65625078,13.1171805 6.85156352,13.3124932 L14.6484454,21.1015626 C14.8437582,21.2968754 15.1562585,21.2968754 15.3515713,21.1015626 L23.1484532,13.3124932 Z'\n+                                            id=''\n+                                            fill='#979797'\n+                                        />\n+                                        <circle\n+                                            id='Oval-2'\n+                                            stroke='#989898'\n+                                            strokeWidth='2'\n+                                            cx='15'\n+                                            cy='15'\n+                                            r='14'\n+                                        />\n",
+            "id": 0,
+            "range": {
+              "start": 22,
+              "end": 72
+            },
+            "summary": "Update the structure of nested SVG elements within the group for better organization."
+          }
+        ],
+        "summary": "Organize the structure of nested SVG elements for improved readability and maintenance.",
+        "id": 2
+      },
+      {
+        "summary": "Ensure proper closure of SVG and span tags in the functional component.",
+        "id": 3,
+        "codeSteps": [
+          {
+            "path": "webapp/channels/src/components/widgets/icons/accordion_toggle_icon.tsx",
+            "id": 0,
+            "range": {
+              "start": 55,
+              "end": 62
+            },
+            "code": "-                </svg>\n-            </span>\n-        );\n-    }\n+                </g>\n+            </svg>\n+        </span>\n+    );\n",
+            "summary": "Close the SVG and span tags correctly in the functional component's return statement."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "gitInfo": {
+      "pr": "https://github.com/marmelab/react-admin/pull/9503",
+      "issue": "https://github.com/marmelab/react-admin/issues/9502",
+      "repo": "https://github.com/marmelab/react-admin"
+    },
+    "id": 8,
+    "steps": [
+      {
+        "codeSteps": [
+          {
+            "summary": "Import necessary modules for theme context and layout testing",
+            "code": "+import { AdminContext } from '../AdminContext';\n+import { ThemeTestWrapper } from '../layout/ThemeTestWrapper';\n+import { defaultDarkTheme } from './defaultTheme';\n",
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "id": 0,
+            "range": {
+              "start": 7,
+              "end": 9
+            }
+          },
+          {
+            "summary": "Update test description to reflect that the default theme is light",
+            "range": {
+              "start": 26,
+              "end": 27
+            },
+            "id": 1,
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "code": "-    it('should return undefined by default', () => {\n+    it('should return the light theme by default', () => {\n"
+          }
+        ],
+        "summary": "Import necessary modules and update test descriptions to reflect the light theme defaults.",
+        "id": 0
+      },
+      {
+        "summary": "Implement tests to ensure the light theme is displayed under various scenarios.",
+        "codeSteps": [
+          {
+            "range": {
+              "start": 32,
+              "end": 82
+            },
+            "id": 0,
+            "summary": "Add multiple tests to ensure the light theme is displayed under various scenarios",
+            "code": "-        expect(screen.queryByLabelText('has-theme')).toBeNull();\n+        expect(screen.queryByText('light')).not.toBeNull();\n+    });\n+\n+    it('should return the light theme when no dark theme is provided even though user prefers dark mode', () => {\n+        render(\n+            <ThemeTestWrapper mode=\"dark\">\n+                <CoreAdminContext authProvider={authProvider}>\n+                    <Foo />\n+                </CoreAdminContext>\n+            </ThemeTestWrapper>\n+        );\n+        expect(screen.queryByText('light')).not.toBeNull();\n+    });\n+\n+    it('should return the light theme when no dark theme is provided even though the stored theme is dark', () => {\n+        const store = memoryStore({ theme: 'dark' });\n+        render(\n+            <CoreAdminContext authProvider={authProvider} store={store}>\n+                <Foo />\n+            </CoreAdminContext>\n+        );\n+        expect(screen.queryByText('light')).not.toBeNull();\n+    });\n+\n+    it('should return the user preferred theme by default', async () => {\n+        const ssrMatchMedia = query => ({\n+            matches: query === '(prefers-color-scheme: dark)' ? true : false,\n+        });\n+\n+        render(\n+            <ThemeTestWrapper mode=\"dark\">\n+                <AdminContext\n+                    authProvider={authProvider}\n+                    darkTheme={{\n+                        ...defaultDarkTheme,\n+                        components: {\n+                            MuiUseMediaQuery: {\n+                                defaultProps: {\n+                                    ssrMatchMedia,\n+                                    matchMedia: ssrMatchMedia,\n+                                },\n+                            },\n+                        },\n+                    }}\n+                >\n+                    <Foo />\n+                </AdminContext>\n+            </ThemeTestWrapper>\n+        );\n+        await screen.findByText('dark');\n",
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx"
+          },
+          {
+            "range": {
+              "start": 37,
+              "end": 38
+            },
+            "summary": "Change CoreAdminContext to AdminContext in component rendering",
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "id": 1,
+            "code": "-            <CoreAdminContext\n+            <AdminContext\n"
+          },
+          {
+            "id": 2,
+            "range": {
+              "end": 40,
+              "start": 40
+            },
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "code": "+                darkTheme={defaultDarkTheme}\n",
+            "summary": "Pass defaultDarkTheme as a prop to AdminContext"
+          },
+          {
+            "code": "-            </CoreAdminContext>\n+            </AdminContext>\n",
+            "range": {
+              "end": 43,
+              "start": 42
+            },
+            "summary": "Close AdminContext instead of CoreAdminContext",
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "id": 3
+          },
+          {
+            "range": {
+              "start": 45,
+              "end": 45
+            },
+            "code": "+        expect(screen.queryByText('dark')).not.toBeNull();\n",
+            "id": 4,
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "summary": "Check if the dark theme is displayed after rendering"
+          }
+        ],
+        "id": 1
+      },
+      {
+        "codeSteps": [
+          {
+            "code": "-        const { result: storeResult } = renderHook(() => useStore('theme'));\n+        const { result: storeResult } = renderHook(() => useStore('theme'), {\n+            wrapper: ({ children }) => (\n+                <AdminContext\n+                    authProvider={authProvider}\n+                    darkTheme={defaultDarkTheme}\n+                >\n+                    {children}\n+                </AdminContext>\n+            ),\n+        });\n",
+            "summary": "Wrap theme store hook in AdminContext for proper context access",
+            "range": {
+              "start": 48,
+              "end": 58
+            },
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "id": 0
+          },
+          {
+            "summary": "Wrap theme hook in AdminContext to provide dark theme context",
+            "id": 1,
+            "path": "packages/ra-ui-materialui/src/theme/useTheme.spec.tsx",
+            "code": "-        const { result: themeResult } = renderHook(() => useTheme());\n+        const { result: themeResult } = renderHook(() => useTheme(), {\n+            wrapper: ({ children }) => (\n+                <AdminContext\n+                    authProvider={authProvider}\n+                    darkTheme={defaultDarkTheme}\n+                >\n+                    {children}\n+                </AdminContext>\n+            ),\n+        });\n",
+            "range": {
+              "end": 62,
+              "start": 52
+            }
+          }
+        ],
+        "id": 2,
+        "summary": "Wrap theme store and theme hook in AdminContext for proper context access and dark theme provisioning."
+      }
+    ],
+    "exercise": "In this exercise, you are contributing to the project `react-admin`, a frontend framework for single-page applications on top of REST/GraphQL APIs. You have encountered an issue where the `useTheme` hook returns an undefined value before the `ToggleThemeButton` is used in the application. \n\nYour task is to investigate the `useTheme` hook implementation and fix the problem so that it returns the correct theme value on the initial load of the application. This will involve ensuring that the theme is properly initialized and available before the `ToggleThemeButton` is interacted with. \n\nTo reproduce the issue, you can refer to the sandbox provided in the issue description and inspect the output of `console.log('theme', theme);` in the `PostList` component.",
+    "title": "[2030796309] Exercise: Resolve useTheme Hook Undefined Value"
+  },
+  {
+    "title": "[2379745975] Exercise: Add Option to Disable 'Save from Controls' Feature",
+    "exercise": "In this exercise, you will contribute to the `storybook` project, a workshop for building, documenting, and testing UI components in isolation. Users have expressed the need for an option to disable the 'save from controls' feature, which prompts a popup when a story is modified. Your task is to implement a configuration option that allows users to prevent this popup from appearing when working with controls. Ensure that this new feature can be easily toggled on or off, providing a smoother experience for those who prefer not to use it.",
+    "steps": [
+      {
+        "codeSteps": [
+          {
+            "path": "code/addons/controls/src/ControlsPanel.tsx",
+            "code": "+  disableSaveFromUI?: boolean;\n",
+            "range": {
+              "start": 37,
+              "end": 37
+            },
+            "id": 0,
+            "summary": "Add a new boolean parameter to determine if saving from UI is disabled"
+          }
+        ],
+        "id": 0,
+        "summary": "Add a new parameter to the ControlsPanel to manage the saving functionality from the UI."
+      },
+      {
+        "codeSteps": [
+          {
+            "code": "-  const { expanded, sort, presetColors } = useParameter<ControlsParameters>(PARAM_KEY, {});\n+  const {\n+    expanded,\n+    sort,\n+    presetColors,\n+    disableSaveFromUI = false,\n+  } = useParameter<ControlsParameters>(PARAM_KEY, {});\n",
+            "summary": "Include the disableSaveFromUI property in the useParameter hook destructure with a default value of false",
+            "range": {
+              "end": 55,
+              "start": 49
+            },
+            "path": "code/addons/controls/src/ControlsPanel.tsx",
+            "id": 0
+          }
+        ],
+        "id": 1,
+        "summary": "Implement the new parameter in the useParameter hook, setting a default value."
+      },
+      {
+        "id": 2,
+        "summary": "Update the rendering logic of the SaveStory component to use the new parameter conditionally.",
+        "codeSteps": [
+          {
+            "path": "code/addons/controls/src/ControlsPanel.tsx",
+            "id": 0,
+            "range": {
+              "start": 87,
+              "end": 93
+            },
+            "code": "-      {hasControls && hasUpdatedArgs && global.CONFIG_TYPE === 'DEVELOPMENT' && (\n-        <SaveStory {...{ resetArgs, saveStory, createStory }} />\n-      )}\n+      {hasControls &&\n+        hasUpdatedArgs &&\n+        global.CONFIG_TYPE === 'DEVELOPMENT' &&\n+        disableSaveFromUI !== true && <SaveStory {...{ resetArgs, saveStory, createStory }} />}\n",
+            "summary": "Conditionally render the SaveStory component based on disableSaveFromUI and other props"
+          }
+        ]
+      }
+    ],
+    "gitInfo": {
+      "issue": "https://github.com/storybookjs/storybook/issues/28377",
+      "repo": "https://github.com/storybookjs/storybook",
+      "pr": "https://github.com/storybookjs/storybook/pull/28734"
+    },
+    "id": 9
+  }
+]
