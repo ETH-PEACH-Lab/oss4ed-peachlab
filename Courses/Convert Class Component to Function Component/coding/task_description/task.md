@@ -7,4 +7,4 @@ Component behavior, they should be refactored to effectively test the same behav
 structure. While the use of `react-testing-library` is preferred for any new tests, it is not mandatory. As part of your 
 submission, please document where and when this component is utilized so that QA can adequately test the changes.
 
-The following link will lead you to a file you need to work on: [team_list_dropdown.tsx](../../../mattermost/webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx)
+e following lead to open a file you need to work on: [team_list_dropdown.tsx](../../../mattermost/webapp/channels/src/components/admin_console/system_user_detail/team_list/team_list_dropdown.tsx)
