@@ -1,0 +1,1 @@
+To enhance your understanding of the frameworks and technologies involved in this Mattermost issue, consider reviewing some of the additional readings linked below. These resources will give you a broader context on the topics covered in the issue and pull request.

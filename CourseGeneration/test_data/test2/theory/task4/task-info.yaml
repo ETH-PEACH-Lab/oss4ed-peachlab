@@ -1,0 +1,5 @@
+type: theory
+custom_name: Best Practices for Data Validation
+files:
+  - name: task.js
+    visible: true

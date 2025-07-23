@@ -1,0 +1,1 @@
+Client-side validation occurs in the user's browser before the data is sent to the server. This helps to provide immediate feedback to users. Server-side validation happens on the server after the data is submitted. While client-side validation can improve user experience, it is crucial to implement server-side validation for security and data integrity.

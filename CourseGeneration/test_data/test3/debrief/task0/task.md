@@ -1,0 +1,1 @@
+In this task, you will learn about React Hooks, a feature that allows you to use state and other React features without writing a class. Hooks enable functional components to have side effects, manage state, and access the context. Explore how Hooks can simplify your code and allow for cleaner and more manageable components.

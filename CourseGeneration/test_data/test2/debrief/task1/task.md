@@ -1,0 +1,3 @@
+This task will cover the strategies for optimizing SQL queries to ensure they run as quickly as possible. Understanding how to use indexes effectively and how to analyze query performance will help you improve the responsiveness of your application. **Reading materials**:
+- [SQL Query Optimization Techniques](https://www.geeksforgeeks.org/sql-query-optimization-techniques/)
+- [EXPLAIN in SQL](https://www.sqlshack.com/sql-explain-command/)

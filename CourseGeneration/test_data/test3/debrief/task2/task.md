@@ -1,0 +1,1 @@
+The `useState` Hook is essential for managing state in functional components. It allows you to add state variables to your component. This task will guide you through the syntax of `useState`, how to declare state variables, and how to update them.

@@ -1,0 +1,1 @@
+After understanding the issue, it's important to review the solution implemented in Pull Request #28357. This PR addresses the concerns raised in the issue, enhancing the functionality and efficiency of the application. Check out the leading changes and code improvements [here](https://github.com/mattermost/mattermost/pull/28357).

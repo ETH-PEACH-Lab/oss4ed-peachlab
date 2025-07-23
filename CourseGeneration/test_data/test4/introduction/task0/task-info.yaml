@@ -1,0 +1,5 @@
+type: theory
+custom_name: Welcome to The Course!
+files:
+  - name: task.js
+    visible: true

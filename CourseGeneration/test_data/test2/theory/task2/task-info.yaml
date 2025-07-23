@@ -1,0 +1,5 @@
+type: theory
+custom_name: Client-Side vs. Server-Side Validation
+files:
+  - name: task.js
+    visible: true

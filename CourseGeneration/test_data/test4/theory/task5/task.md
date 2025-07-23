@@ -1,0 +1,1 @@
+Postman is a popular tool for testing APIs, allowing you to make requests and view responses. Familiarize yourself with using Postman to ease the process of testing and debugging your API interactions.

@@ -1,0 +1,5 @@
+type: theory
+custom_name: Database Design Best Practices
+files:
+  - name: task.js
+    visible: true

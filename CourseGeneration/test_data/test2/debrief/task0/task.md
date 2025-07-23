@@ -1,0 +1,3 @@
+In a web application, the performance can often be bottlenecked by the way database connections are managed. In this task, you will learn about efficient database connection pooling and how it diminishes latency by reusing connections instead of opening new ones for every request.**Reading materials**:
+- [Database Connection Pooling](https://www.digitalocean.com/community/tutorials/what-is-connection-pooling)
+- [Optimizing Database Performance](https://www.sitepoint.com/database-optimization-tips/)

@@ -1,0 +1,5 @@
+type: theory
+custom_name: Understanding Code Review Principles
+files:
+  - name: task.js
+    visible: true

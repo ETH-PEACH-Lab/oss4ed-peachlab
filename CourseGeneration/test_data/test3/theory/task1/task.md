@@ -1,0 +1,1 @@
+Implementing rate limiting helps in protecting APIs from malicious attacks, such as DDoS or brute force attacks. Additionally, it can help in avoiding server overload, allowing for better control over resource utilization, and ensuring a better user experience during high load scenarios.

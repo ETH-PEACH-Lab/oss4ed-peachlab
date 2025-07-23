@@ -1,0 +1,15 @@
+type: marketplace
+title: test_data/test4
+language: English
+programming_language: JavaScript
+content:
+  - introduction
+  - theory
+  - coding
+  - debrief
+additional_files:
+  - name: GetProjectView.gif
+    is_binary: true
+  - name: package.json
+  - name: package-lock.json
+yaml_version: 3

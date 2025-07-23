@@ -1,0 +1,1 @@
+Testing is an integral part of Go development, especially for error handling. This task will introduce strategies for writing tests that ensure error conditions are handled as expected, including the use of table-driven tests.

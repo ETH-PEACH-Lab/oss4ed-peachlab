@@ -1,0 +1,5 @@
+type: theory
+custom_name: Significance of Collaboration
+files:
+  - name: task.js
+    visible: true

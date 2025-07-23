@@ -1,0 +1,1 @@
+To see how the issue was resolved, you can look at the corresponding Pull Request #28357 [here](https://github.com/mattermost/mattermost/pull/28357). This PR includes the changes made to fix the issue and provides insights into the development process. Exploring this PR will help you understand the code changes and the thought process behind them.

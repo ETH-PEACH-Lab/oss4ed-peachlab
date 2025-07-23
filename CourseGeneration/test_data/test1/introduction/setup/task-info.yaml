@@ -1,0 +1,12 @@
+custom_name: First Step
+files:
+- name: task.js
+  visible: true
+type: theory
+custom_name: First Step
+files:
+- name: task.js
+  visible: true
+- name: config.js
+  visible: false
+type: theory

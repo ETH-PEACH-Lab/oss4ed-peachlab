@@ -1,0 +1,1 @@
+An API response tells you the result of your request, including data returned and status codes. Knowing how to interpret these responses helps troubleshoot issues and confirm successful interactions with the API.

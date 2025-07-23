@@ -1,0 +1,1 @@
+HTTP methods such as GET, POST, PUT, and DELETE are used to perform actions on resources defined by API endpoints. Understanding the purpose and use cases for each method is essential for effectively utilizing and developing APIs.

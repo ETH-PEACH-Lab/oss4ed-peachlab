@@ -1,0 +1,10 @@
+type: theory
+custom_name: First Step
+files:
+  - name: runConfigurations/runner.run.xml
+    visible: false
+    propagatable: false
+  - name: task.js
+    visible: true
+  - name: config.js
+    visible: false

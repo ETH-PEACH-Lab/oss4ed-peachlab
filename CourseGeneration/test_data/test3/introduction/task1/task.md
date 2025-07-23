@@ -1,0 +1,1 @@
+In response to the identified issue, a pull request has been created to implement the necessary fixes. You can check the changes and improvements made to address the issue in the pull request [here](https://github.com/mattermost/mattermost/pull/28357). This pull request will provide insights on how developers contribute to the project and manage issues effectively.

@@ -1,0 +1,1 @@
+To appreciate the implemented changes fully, you should consider running performance tests based on the new implementations. This will help you understand the effectiveness of the updates made in the repository. More information on setting up performance tests can be found in the Mattermost documentation.

@@ -1,0 +1,1 @@
+The `useEffect` Hook lets you perform side effects in function components. Common uses of `useEffect` include data fetching, setting up subscriptions, and manually changing the DOM. Learn how to utilize this hook for executing a function after rendering.

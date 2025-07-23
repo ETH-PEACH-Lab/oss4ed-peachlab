@@ -1,0 +1,1 @@
+Many APIs implement rate limiting to restrict the number of calls a client can make in a given time period. Understanding how rate limits work is important to avoid hitting them and ensure smooth operation of your application.

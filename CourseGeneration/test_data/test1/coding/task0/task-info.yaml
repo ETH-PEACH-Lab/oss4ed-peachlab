@@ -1,0 +1,5 @@
+custom_name: Step by Step Coding
+files:
+- name: task.js
+  visible: true
+type: theory

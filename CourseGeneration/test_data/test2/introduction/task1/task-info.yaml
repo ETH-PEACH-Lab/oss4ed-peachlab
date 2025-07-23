@@ -1,0 +1,5 @@
+type: theory
+custom_name: Exploring the Pull Request
+files:
+  - name: task.js
+    visible: true

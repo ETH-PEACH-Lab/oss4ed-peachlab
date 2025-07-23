@@ -1,0 +1,1 @@
+Go allows you to define your own error types by implementing the `Error()` method. This can be useful for providing more context and information related to an error. Here, you'll learn how to define and use custom error types in your applications.

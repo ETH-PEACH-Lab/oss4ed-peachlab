@@ -1,0 +1,5 @@
+type: theory
+custom_name: Using useEffect Hook
+files:
+  - name: task.js
+    visible: true

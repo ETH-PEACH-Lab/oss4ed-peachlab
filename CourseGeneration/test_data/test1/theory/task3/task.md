@@ -1,0 +1,1 @@
+Good error handling not only involves checking for errors but also how errors are reported and logged. In this task, you will learn about best practices such as logging errors, providing context, and handling different error types efficiently.

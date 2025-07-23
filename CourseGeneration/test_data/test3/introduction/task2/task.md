@@ -1,0 +1,1 @@
+This exercise emphasizes the importance of collaboration in open-source projects like Mattermost. Understanding issues and how they are resolved through pull requests helps foster a community-driven approach to software development. Reflect on how you can contribute to similar discussions or projects in the future.

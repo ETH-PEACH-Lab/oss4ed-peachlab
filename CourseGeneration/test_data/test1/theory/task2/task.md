@@ -1,0 +1,1 @@
+Error wrapping is a mechanism in Go that allows you to wrap an error with additional context. This is particularly useful when you want to provide more information about where and why an error occurred while still preserving the original error. This task will explain how to use the `fmt.Errorf` and `errors.Wrap` functions for wrapping errors.

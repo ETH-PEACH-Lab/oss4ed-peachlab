@@ -1,0 +1,1 @@
+API endpoints are specific paths in an API that you call to access or manipulate data. Each endpoint corresponds to a particular functionality, like getting user data or posting a message. Familiarizing yourself with how endpoints are structured is crucial when integrating with or modifying APIs.

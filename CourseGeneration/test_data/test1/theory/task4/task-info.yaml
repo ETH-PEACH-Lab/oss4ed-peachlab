@@ -1,0 +1,5 @@
+custom_name: Testing Error Scenarios
+files:
+- name: task.js
+  visible: true
+type: theory

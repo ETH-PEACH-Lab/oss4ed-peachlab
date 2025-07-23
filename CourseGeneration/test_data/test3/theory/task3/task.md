@@ -1,0 +1,1 @@
+When a request exceeds its allowed rate limit, APIs typically respond with an HTTP status code. The commonly used status code for rate limiting is 429 (Too Many Requests). Understanding how to handle these responses is crucial for effective client-side behavior.

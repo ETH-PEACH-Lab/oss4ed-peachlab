@@ -1,0 +1,1 @@
+There are various strategies for implementing rate limiting, including: Fixed Window, Sliding Window, and Token Bucket. Each strategy has its own pros and cons and can be used based on specific requirements of the application.

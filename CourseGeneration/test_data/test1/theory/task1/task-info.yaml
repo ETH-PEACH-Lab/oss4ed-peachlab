@@ -1,0 +1,5 @@
+custom_name: Defining Custom Errors
+files:
+- name: task.js
+  visible: true
+type: theory

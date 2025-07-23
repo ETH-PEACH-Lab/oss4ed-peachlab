@@ -1,0 +1,1 @@
+Rate limiting is a technique used to control the amount of incoming and outgoing traffic to or from a network. It ensures the stability of a system by limiting the number of requests that a user can make in a defined period of time. This is essential for preventing abuse and ensuring fair usage among users.
