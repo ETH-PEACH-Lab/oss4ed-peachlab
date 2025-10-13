@@ -4,5 +4,6 @@ var shell = require('shelljs');
 shell.cd("../..");
 shell.exec("git clone https://github.com/mattermost/mattermost.git");
 shell.cd("mattermost");
-shell.exec("git checkout 603c26a5bcda365917285b8f32c6982e170c5cd3");
+shell.exec("git checkout f8fc02791b8232baec5e32aec921d068bca141f7");
 shell.exec("npm install");
+
