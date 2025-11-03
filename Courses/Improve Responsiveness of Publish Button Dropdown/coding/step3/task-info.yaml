@@ -1,5 +1,5 @@
 type: theory
-custom_name: Last Step
+custom_name: Step 3
 files:
   - name: task.js
     visible: true
