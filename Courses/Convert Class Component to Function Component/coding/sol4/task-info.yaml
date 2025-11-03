@@ -1,5 +1,5 @@
 type: theory
-custom_name: Check Step 1 Implementation
+custom_name: Check Step 3 Implementation
 files:
   - name: task.js
     visible: true

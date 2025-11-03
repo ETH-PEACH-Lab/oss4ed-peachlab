@@ -1,4 +1,4 @@
-Initial setup and import adjustments for the TeamListDropdown component conversion.
+Complete the import adjustments for the TeamListDropdown component conversion.
 
 <div class="hint" title="Click here if you want to know what to do">
     <li>Import memo and useCallback from React, and useIntl from react-intl
